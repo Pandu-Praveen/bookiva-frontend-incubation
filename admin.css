@@ -1,0 +1,168 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --navbar_hight: 0px;
+  --sidenav-barwidth: 158px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-link .right-link {
+  display: inline-flex;
+}
+
+.sidebar-link[aria-expanded="true"] .right-link {
+  transform: rotate(180deg);
+}
+
+.sidebar-nav {
+  width: var(--sidenav-barwidth) !important;
+}
+
+@media (min-width: 992px) {
+  body {
+    overflow: auto !important;
+  }
+  .offcanvas-backdrop::before {
+    display: none !important;
+  }
+  main {
+    margin-left: var(--sidenav-barwidth);
+  }
+  .sidebar-nav {
+    transform: none !important;
+    visibility: visible;
+    top: var(--navbar_hight) !important;
+    height: calc(100% - var(--navbar_hight)) !important;
+  }
+}
+
+#navbar .navbar-nav li {
+  margin-left: 6px;
+}
+
+#navbar .navbar-nav li a {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: black;
+}
+
+#navbar .navbar-nav li a.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#navbar .navbar-nav li a:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Change color of 14th element on hover */
+#navbar .navbar-nav li:nth-child(14):hover a {
+  background-color: var(red);
+  color: white;
+}
+
+.nav-item.active {
+  background-color: white;
+  border-radius: 25px;
+  border: 4px solid black;
+}
+.navbar-dark .nav-item.active .nav-link,
+.navbar-dark .nav-item.active .nav-link * {
+  color: black !important;
+}
+
+.nav-item:nth-child(14).active .nav-link,
+.nav-item:nth-child(14).active .nav-link * {
+  color: red !important;
+}
+
+@keyframes moving-gradient {
+  0% {
+    background-position: -250px 0;
+  }
+  100% {
+    background-position: 250px 0;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+table td {
+  height: 50px;
+  vertical-align: middle;
+  padding: 8px;
+}
+
+table td span {
+  display: block;
+}
+
+table .td-1 {
+  width: 20px;
+}
+
+table .td-1 span {
+  width: 20px;
+  height: 20px;
+}
+
+table .td-2 {
+  width: 50px;
+}
+
+table .td-2 span {
+  background-color: rgba(0, 0, 0, 0.15);
+  width: 50px;
+  height: 50px;
+}
+
+table .td-3 {
+  width: 400px;
+}
+
+table .td-3 span {
+  height: 12px;
+  background: linear-gradient(to right, #eee 20%, #ddd 50%, #eee 80%);
+  background-size: 500px 100px;
+  animation-name: moving-gradient;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+/* table .td-4 {
+} */
+
+table .td-5 {
+  width: 100px;
+}
+
+table .td-5 span {
+  background-color: rgba(0, 0, 0, 0.15);
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(to right, #eee 20%, #ddd 50%, #eee 80%);
+  background-size: 500px 100px;
+  animation-name: moving-gradient;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
