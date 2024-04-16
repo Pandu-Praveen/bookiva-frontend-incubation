@@ -26,12 +26,15 @@
     <nav class="navv-main">
       <div class="nav-main">
         <div class="nav-img">
-          <img src="/images/icon2.png" alt="" style="width: 30px" />
-          <img src="/images/bookiva2.png" alt="" style="width: 130px" />
+          <!-- <img src="/images/icon2.png" alt="" style="width: 30px" /> -->
+          <img src="/images/bookiva4.png" alt="" style="width: 200px" />
         </div>
         <div class="nav-links">
           <a href="/" class="nav-link ff-inter fs-2s">Home</a>
-          <a href="/venues/" class="nav-link nav-link-login ff-inter fs-2s"
+          <a
+            id="browse"
+            href="/venues/"
+            class="nav-link nav-link-login ff-inter fs-2s"
             >Browse</a
           >
           <button class="user-nav br-m">
@@ -72,10 +75,15 @@
 
     <script src="/venue.js" type="module"></script>
     <script>
+      const queryString = window.location.search;
+      const encryptedFormData = queryString.slice(1, queryString.length);
       window.onpopstate = function (event) {
-        window.location.href = "/venues/";
+        window.location.href = `/venues/?${encryptedFormData}`;
       };
       window.history.pushState({}, "", window.location.href);
+      document.querySelectorAll("#browse").forEach(function (element) {
+        element.setAttribute("href", `/venues/?${encryptedFormData}`);
+      });
     </script>
   </body>
 </html>

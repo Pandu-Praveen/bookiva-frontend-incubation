@@ -28,7 +28,7 @@
 
 @media (min-width: 992px) {
   body {
-    overflow: auto !important;
+    overflow-x: hidden;
   }
   .offcanvas-backdrop::before {
     display: none !important;

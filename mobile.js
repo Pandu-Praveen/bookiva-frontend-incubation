@@ -20,11 +20,12 @@ fetch(API_LOCAL + "/profile", {
     } else if (data.role == "ADMIN") {
       location.href = "/admin/";
     } else if (data.role == "USER") {
-      location.href = "/venues/";
+      location.href = `/venues/?${encryptedFormData}`;
     }
   });
 const formEl = document.querySelector(".form");
-
+const queryString = window.location.search;
+const encryptedFormData = queryString.slice(1, queryString.length);
 formEl.addEventListener("submit", async (event) => {
   event.preventDefault();
   const email = document.querySelector("#email").value;
@@ -49,7 +50,7 @@ formEl.addEventListener("submit", async (event) => {
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
         console.log("Welcome");
-        location.href = "/venues/";
+        location.href = `/venues/?${encryptedFormData}`;
       } else if (data.message === "Internal server error") {
         alert("Internal server error");
         signBtn.innerHTML = `<span class="sign-in butt-main ff-inter fs-3s">Lets Go</span>`;

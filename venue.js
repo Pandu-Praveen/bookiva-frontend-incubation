@@ -90,11 +90,21 @@ const renderCalendar = async (venue, isManagement) => {
 
 // Make a GET request to fetch venue data when the page loads
 window.addEventListener("DOMContentLoaded", async () => {
+  const queryString = window.location.search;
+  const encryptedFormData = queryString.slice(1, queryString.length);
+  const hallName = decodeURIComponent(encryptedFormData);
+  // console.log(encryptedFormData, hallName);
   try {
     const response = await fetch(API_LOCAL + "/venues", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ hallName }),
       credentials: "include",
     });
     data = await response.json();
+    console.log(data);
     // Process the data and generate HTML elements to display it
     renderVenues(data);
   } catch (err) {
@@ -119,7 +129,7 @@ function renderVenues(venues) {
                 <p>Seating Capacity: ${cardData.seatingCapacity}</p>
                 <p>${cardData.location}</p>
             </div>
-            <a href="#" class="butt-main details-btn ff-inter fs-s" data-venue="${cardData.hallName}">DETAILS</a>
+            <a href="#" class="butt-main details-btn ff-inter fs-s" data-venue="${cardData.hallName}" style="letter-spacing:1px;">DETAILS</a>
         </div>\n`;
   });
 

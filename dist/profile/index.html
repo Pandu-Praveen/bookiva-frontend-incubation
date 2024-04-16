@@ -62,7 +62,7 @@
       rel="stylesheet"
       href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
     />
-    <link rel="stylesheet" crossorigin href="/assets/profile-D4w0gwbR.css">
+    <link rel="stylesheet" crossorigin href="/assets/profile-BZ_CGDSR.css">
   </head>
 
   <body>
@@ -109,7 +109,7 @@
           <img
             src="/images/icon2.png"
             alt=""
-            style="width: 25px; margin-left: 750px"
+            style="width: 25px; margin-left: 880px"
             class="logo-img"
           />
           <img
@@ -575,8 +575,8 @@
             />
           </div>
           <h6 style="font-weight: 600; padding-left: 7px" id="note">
-            NOTE: If the Event is Successfully finished , then click the
-            Accepted button and upload the event pic to get Completed!
+            NOTE: If the Event is Successfully finished , then click the Upload
+            button and upload the event pic to get Completed!
           </h6>
           <br />
 
@@ -958,6 +958,15 @@
         display: block;
       }
     </style>
+    <style>
+      /* Custom styling for the search bar */
+      .dataTables_filter input[type="search"] {
+        /* Your custom styles here */
+        border: 1px solid #ccc; /* Example border */
+        padding: 7px; /* Example padding */
+        border-radius: 20px; /* Example border radius */
+      }
+    </style>
     <script>
       const API_LOCAL = "https://bookiva-backend.vercel.app";
       let NAME, Name, EMAIL;
@@ -985,14 +994,15 @@
       var profiledata;
 
       var pendingButtonStyle =
-        "background-color: #007FFF; color: white; padding: 5px 10px; border: none; border-radius: 5px;cursor: default;";
+        "background-color: #b8d4ff; color: #3a81eb; padding: 0.1px 10px; border: none; border-radius: 5px;cursor: default;";
       var acceptButtonStyle =
-        "background-color: #E49B0F; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: default;";
+        "background-color: #ffe4a1; color: #C29C00; padding: 0.1px 10px; border: none; border-radius: 5px; cursor: default;";
       var rejectButtonStyle =
-        "background-color: #CF1020; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: default;";
+        "background-color: #ffaaaa; color: #58111A; padding: 0.1px 10px; border: none; border-radius: 5px; cursor: default;";
       var completedButtonStyle =
-        "background-color: #009150; color: white; padding: 5px 10px; border: none; border-radius: 5px;cursor: default;";
-
+        "background-color: #c3faca; color: #3CB371; padding: 0.1px 10px; border: none; border-radius: 5px;cursor: default;";
+      var uploadedButtonStyle =
+        "background-color: #1CAC78; color: white; padding: 5px 10px; border: none; border-radius: 5px;cursor: default;";
       // // Function to create a new table element with the provided bookings data and type
       const createTable = (bookings, type) => {
         // console.log(bookings);
@@ -1040,6 +1050,7 @@
             .append("<th>Refresh Type</th>")
             .append("<th>Food</th>")
             .append("<th>Status</th>")
+            .append("<th>Upload</th>")
             .append(`<th>Delete</th>`);
 
           // Create the table body
@@ -1081,6 +1092,7 @@
               newRow.append(
                 `<td><button style="${pendingButtonStyle}"  >Pending</button></td>`
               );
+              newRow.append(`<td>-</td>`);
             } else if (
               booking.status === "denied" ||
               booking.status === "denied_temp"
@@ -1104,25 +1116,31 @@
             booking-chiefguest="${booking.chiefguest}"
             booking-eventname="${booking.eventname}"
             style="${rejectButtonStyle}" >Denied</button></td>`);
+              newRow.append(`<td>-</td>`);
             } else if (booking.status === "accepted") {
+              newRow.append(
+                `<td ><button style="${acceptButtonStyle}" >Accepted</button></td>`
+              );
               const currentDate = new Date();
               const bookingDate = new Date(booking.date);
 
               // Check if booking date is today or in the past
               if (bookingDate <= currentDate) {
                 // If booking date is today or in the past, change cursor style to 'pointer'
+
                 newRow.append(
                   `<td data-item-_id="${
                     booking._id
-                  }"><button style="${acceptButtonStyle.replace(
+                  }"><button style="${uploadedButtonStyle.replace(
                     "cursor: default;",
                     "cursor: pointer;"
-                  )}" class="accept-button">Accepted</button></td>`
+                  )}" class="upload-button">Upload</button></td>`
                 );
               } else {
                 // If booking date is in the future, keep the cursor style as 'default'
+
                 newRow.append(
-                  `<td data-item-_id="${booking._id}"><button style="${acceptButtonStyle}" >Accepted</button></td>`
+                  `<td data-item-_id="${booking._id}"><button style="${uploadedButtonStyle}; opacity: 0.5; cursor:not-allowed"  >Upload</button></td>`
                 );
               }
             }
@@ -1436,7 +1454,7 @@
         $("#deleteConfirmationModal").modal("hide");
       });
 
-      $(document).on("click", ".accept-button", async function () {
+      $(document).on("click", ".upload-button", async function () {
         var bookingId = $(this).closest("td").data("item-_id");
         const encryptedFormData = encryptData(bookingId);
         // console.log("Accepted",bookingId,encryptedFormData);
@@ -1660,7 +1678,7 @@
               );
             } else if (booking.status === "accepted") {
               newRow.append(
-                `<td data-item-_id="${booking._id}"><button style="${acceptButtonStyle}" class="accept-button">Accepted</button></td>`
+                `<td data-item-_id="${booking._id}"><button style="${acceptButtonStyle}" class="upload-button">Accepted</button></td>`
               );
             }
             newRow
