@@ -70,20 +70,15 @@
     <nav class="navbar navbar-expand-lg bg-light navbar-dark fixed-top p-2">
       <div class="container-fluid text-white">
         <!-- sidenavbar trigger -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          id="sidebarToggle"
+
+        <i
+          class="bx bx-menu"
+          style="color: rgb(0, 0, 0); font-size: 35px"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasExample"
           aria-controls="offcanvasExample"
           aria-label="Toggle navigation"
-        >
-          <span
-            class="navbar-toggler-icon"
-            style="background-color: black"
-          ></span>
-        </button>
+        ></i>
 
         <!-- //sidenavbar trigger -->
         <!-- <img class="d-flex ms-auto" src="public/images/logo.png" alt="" style="width: 100px;"> -->
@@ -107,17 +102,18 @@
             id="logo"
           /> -->
           <img
-            src="/images/icon2.png"
+            src="/images/bookiva4.png"
             alt=""
-            style="width: 25px; margin-left: 880px"
+            style="width: 130px; margin-left: 800px"
             class="logo-img"
+            id=""
           />
-          <img
+          <!-- <img
             src="/images/bookiva2.png"
             alt=""
             style="width: 130px; margin-top: 10px; margin-left: 5px"
             class="logo-img"
-          />
+          /> -->
 
           <form class="d-flex ms-auto" role="download">
             <div class="input-group my-3 my-lg-0">
@@ -177,41 +173,6 @@
       <div class="offcanvas-body p-0 mt-3" style="background-color: black">
         <nav class="navbar-dark">
           <ul class="navbar-nav text-white" id="navbar">
-            <li id="dashboardLink">
-              <span class="text-uppercase text-muted fw-bold mx-3"> core </span>
-            </li>
-            <li id="dashboardLink">
-              <a href="#" class="nav-link mx-3 active" id="dashboardLink">
-                <span class="me-2">
-                  <i class="bi bi-speedometer2"></i>
-                </span>
-                <span> DASHBOARD </span>
-              </a>
-            </li>
-            <!-- <li>
-              <hr class="my-4" />
-            </li> -->
-
-            <!-- <li>
-              <span class="text-uppercase text-muted fw-bold mx-3">
-                interfaces
-              </span>
-            </li>
-            <li>
-              <a
-                class="nav-link px-3 sidebar-link"
-                data-bs-toggle="collapse"
-                href="#collapseExample"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                <i class="bi bi-layout-split"></i>
-                <span class="text-uppercase ms-2 active text-white">
-                  interfaces
-                </span>
-                <i class="bi bi-chevron-down right-link ms-auto"></i>
-              </a> -->
             <div class="collapse" id="collapseExample">
               <div>
                 <a href="#" class="nav-link mx-3 active">
@@ -222,24 +183,9 @@
                 </a>
               </div>
             </div>
-
-            <!-- <li>
-              <a href="#" class="nav-link mx-3 active">
-                <span class="me-2">
-                  <i class="bi bi-file-earmark-fill"></i>
-                </span>
-                <span> PAGES </span>
-              </a>
-            </li> -->
-
-            <li id="dashboardLink">
-              <hr class="my-4" />
-            </li>
-
+            <br /><br />
             <li id="tableLink">
-              <span class="text-uppercase text-muted fw-bold mx-3">
-                Tables
-              </span>
+              <span class="text-uppercase text-muted fw-bold mx-3"> Core </span>
             </li>
 
             <li id="reservationsList" class="nav-item active">
@@ -268,6 +214,21 @@
                 <span> PROFILE </span>
               </a>
             </li>
+            <li id="halls" class="nav-item">
+              <a
+                href="/venues/index.html"
+                class="nav-link mx-3"
+                data-target="halls"
+              >
+                <span class="me-2">
+                  <i
+                    class="bx bx-home"
+                    style="font-size: 19px; margin-left: -2px"
+                  ></i>
+                </span>
+                <span>HALLS</span>
+              </a>
+            </li>
 
             <li id="dashboardLink">
               <hr class="my-4" />
@@ -283,37 +244,6 @@
             </li>
 
             <!-- For Users -->
-
-            <!-- <li id="dashboardLink">
-              <hr class="my-4" />
-            </li>
-
-            <li id="userLink">
-              <span class="text-uppercase text-muted fw-bold mx-3">
-                Users
-              </span>
-            </li>
-
-            
-
-            <li id="allUsersList" class="nav-item">
-              <a href="#" class="nav-link mx-3" data-target="allUsers">
-                <span class="me-2">
-                  <i class="bi bi-people"></i>
-                </span>
-                <span> ALL USERS</span>
-              </a>
-            </li>
-           
-            <li id="cancelledList" class="nav-item">
-              <a href="#" class="nav-link mx-3" data-target="cancelled">
-                <span class="me-2">
-                  <i class="fa-sharp fa-regular fa-thumbs-down"></i>
-                </span>
-                <span>CANCELLED</span>
-              </a>
-            </li>
-           -->
           </ul>
         </nav>
       </div>
@@ -957,18 +887,34 @@
       .dropdown:hover .dropdown-content {
         display: block;
       }
-    </style>
-    <style>
-      /* Custom styling for the search bar */
-      .dataTables_filter input[type="search"] {
-        /* Your custom styles here */
-        border: 1px solid #ccc; /* Example border */
-        padding: 7px; /* Example padding */
-        border-radius: 20px; /* Example border radius */
+      @media screen and (max-width: 400px) {
+        #note {
+          font-size: small;
+        }
+        .dataTables_filter input[type="search"] {
+          border: 1px solid #ccc;
+          width: 60%;
+          padding: 7px;
+          border-radius: 20px;
+          margin-right: 5px;
+        }
+        .dataTables_wrapper select {
+          margin-top: 20px;
+          text-align: left;
+        }
       }
     </style>
+    <style>
+      .dataTables_filter input[type="search"] {
+        border: 1px solid #ccc;
+        padding: 7px;
+        border-radius: 20px;
+        margin-right: 10px;
+      }
+    </style>
+
     <script>
-      const API_LOCAL = "https://bookiva-backend.vercel.app";
+      const API_LOCAL = "http://localhost:3500";
       let NAME, Name, EMAIL;
       menu();
       async function menu() {
@@ -1238,52 +1184,50 @@
 
         // Create the profile section
         const profileSection = $(`
-          <div id="profileSection" style="position: fixed; top: 55%; left: 55%; transform: translate(-50%, -50%); width: 50%; max-width: 500px; background-color: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
-            <h3 class="form-title" style="text-align:center;">Profile Details</h3>
-            <form id="createProfileForm">
-              <div class="user-input-box">
-                <label for="fullName" style="font-weight:bold;">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" value="${profiledata.name}" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
-              </div>
-              <div class="user-input-box">
-                <label for="email" style="font-weight:bold;">Email ID</label>
-                <input type="email" id="email" name="email" placeholder="Your Email ID" value="${profiledata.email}" readonly style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; background-color: #f4f4f4;">
-              </div>
-              <div class="user-input-box">
-                <label for="college" style="font-weight:bold;">College Name</label>
-                <input type="text" id="college" name="college" placeholder="College Name" value="${profiledata.college}" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
-              </div>
-              <div class="user-input-box">
-                <label for="department" style="font-weight:bold;">Department Ex: (EEE , IT , CSE)</label>
-                <input type="text" id="department" name="department" placeholder="Your Department" value="${profiledata.dept}" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
-              </div>
-              <div style="text-align: center;">
-                <button type="button" id="updateButton" style="display: none; padding: 10px 20px; background-color: #009150; color: white; border: none; border-radius: 4px; cursor: pointer;">Update</button>
-                <button type="button" id="cancelButton" style="display: none; padding: 10px 20px; background-color: #CF1020; color: white; border: none; border-radius: 4px; cursor: pointer;">Cancel</button>
-              </div>
-            </form>
-          </div>
+        <div id="profileSection" style="max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+    <h3 class="form-title" style="text-align:center;">Profile Details</h3>
+    <form id="createProfileForm">
+        <div class="user-input-box">
+            <label for="fullName" style="font-weight:bold;">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" value="${profiledata.name}" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div class="user-input-box">
+            <label for="email" style="font-weight:bold;">Email ID</label>
+            <input type="email" id="email" name="email" placeholder="Your Email ID" value="${profiledata.email}" readonly style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; background-color: #f4f4f4;">
+        </div>
+        <div class="user-input-box">
+            <label for="college" style="font-weight:bold;">College Name</label>
+            <input type="text" id="college" name="college" placeholder="College Name" value="${profiledata.college}" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div class="user-input-box">
+            <label for="department" style="font-weight:bold;">Department Ex: (EEE , IT , CSE)</label>
+            <input type="text" id="department" name="department" placeholder="Your Department" value="${profiledata.dept}" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="text-align: center;">
+            <button type="button" id="updateButton" style="padding: 10px 20px; background-color: #009150; color: white; border: none; border-radius: 4px; cursor: pointer;">Update</button>
+        </div>
+    </form>   
+</div>
+
         `);
 
         // Append the profile section to the body
         $("body").append(profileSection);
 
-        // Function to handle changes in form fields
-        const handleInputChange = () => {
-          $("#updateButton").show();
-          $("#cancelButton").show();
-        };
-
-        // Add event listeners to form inputs
-        $("#name, #college, #department").on("input", handleInputChange);
-
-        // Add event listener to update button
         $("#updateButton").on("click", function () {
           const updatedName = $("#name").val();
           const updatedCollege = $("#college").val();
           const updatedDept = $("#department").val();
 
           // Perform update request
+          const button = $(this);
+
+          button.prop("disabled", true); // Disable the button to prevent multiple clicks
+          button.html("Updating..."); // Change button text to Loading...
+          button.css({
+            transition: "background-color 0.3s ease",
+            backgroundColor: "rgba(0, 0, 0, 0.5)", // Fade the button to a semi-transparent black color
+          });
           fetch(API_LOCAL + "/updateprofile", {
             method: "POST",
             credentials: "include",
@@ -1308,15 +1252,15 @@
             .catch((error) => {
               console.error("Error:", error);
               // Handle error
+            })
+            .finally(() => {
+              // Revert button style to normal
+              button.prop("disabled", false); // Re-enable the button
+              button.html("Update"); // Change button text back to Update
+              button.css({
+                backgroundColor: "#009150", // Restore original background color
+              });
             });
-        });
-
-        // Add event listener to cancel button
-        $("#cancelButton").on("click", function () {
-          // Reset form fields or any other action
-          // Hide update and cancel buttons again
-          $("#updateButton").hide();
-          $("#cancelButton").hide();
         });
 
         return profileSection; // Return the profile section
@@ -1474,7 +1418,7 @@
       // Click event handlers for navigation links
       $(document).ready(function () {
         // Click event handler for pending link
-        $("#navbar li:nth-child(6)").click(function () {
+        $("#navbar li:nth-child(5)").click(function () {
           $("#recordsTitle").text("My Reservations");
 
           if (currentState != "reservations") {
@@ -1487,7 +1431,7 @@
         });
 
         // Click event handler for accepted link
-        $("#navbar li:nth-child(7)").click(function () {
+        $("#navbar li:nth-child(6)").click(function () {
           $("#recordsTitle").text("Completed List");
 
           if (currentState != "completed") {
@@ -1499,7 +1443,7 @@
         });
 
         // Click event handler for denied link
-        $("#navbar li:nth-child(8)").click(function () {
+        $("#navbar li:nth-child(7)").click(function () {
           $("#recordsTitle").text("My Profile");
 
           if (currentState != "profile") {
@@ -1514,7 +1458,15 @@
 
       // Function to initialize DataTable for the table with given ID
       const initializeDataTable = (tableId) => {
-        $(`#${tableId}`).DataTable();
+        $(`#${tableId}`).DataTable({
+          language: {
+            paginate: {
+              next: ">>",
+              previous: "<<",
+            },
+          },
+          dom: '<"top"pfl<"clear">>rt<"bottom"ip<"clear">>',
+        });
       };
 
       // // // Function to update the table with given data and type

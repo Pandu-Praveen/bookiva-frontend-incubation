@@ -2,9 +2,12 @@ import { API_LOCAL } from "./config";
 const currlocation = location.href;
 if (
   !(
-    currlocation == "http://localhost:4173/" ||
-    currlocation == "http://localhost:4173/index.html" ||
-    currlocation == "http://localhost:4173/index"
+    currlocation == "http://localhost:5173/" ||
+    currlocation == "http://localhost:5173/index.html" ||
+    currlocation == "http://localhost:5173/index" ||
+    currlocation == "https://bookiva-frontend.vercel.app/" ||
+    currlocation == "https://bookiva-frontend.vercel.app/index.html" ||
+    currlocation == "https://bookiva-frontend.vercel.app/index"
   )
 ) {
   location.href = "/404/index.html";

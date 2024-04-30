@@ -54,6 +54,12 @@
     <!-- Your additional stylesheets -->
     <style>
       /* Your custom styles here */
+      .dataTables_filter input[type="search"] {
+        border: 1px solid #ccc;
+        padding: 7px;
+        border-radius: 20px;
+        margin-right: 10px;
+      }
       body {
         font-family: "Poppins", sans-serif;
       }
@@ -124,16 +130,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <img
-            class="d-flex ms-auto"
-            src="/images/.png"
-            alt=""
-            style="width: 190px; margin-right: -290px"
+            src="/images/bookiva4.png"
+            alt="bookiva"
+            style="width: 130px; margin-left: 700px"
+            class="logo-img"
           />
-          <img
+          <!-- <img
             src="/images/icon2.png"
             alt=""
             style="width: 25px; margin-left: 750px"
-          />
+          /> -->
 
           <form class="d-flex ms-auto" role="download">
             <div class="input-group my-3 my-lg-0">
@@ -194,40 +200,9 @@
         <nav class="navbar-dark">
           <ul class="navbar-nav text-white" id="navbar">
             <li id="dashboardLink">
-              <span class="text-uppercase text-muted fw-bold mx-3"> core </span>
+              <span class="text-uppercase text-muted fw-bold mx-3"> </span>
             </li>
-            <li id="dashboardLink">
-              <a href="#" class="nav-link mx-3 active" id="dashboardLink">
-                <span class="me-2">
-                  <i class="bi bi-speedometer2"></i>
-                </span>
-                <span> DASHBOARD </span>
-              </a>
-            </li>
-            <!-- <li>
-              <hr class="my-4" />
-            </li> -->
 
-            <!-- <li>
-              <span class="text-uppercase text-muted fw-bold mx-3">
-                interfaces
-              </span>
-            </li>
-            <li>
-              <a
-                class="nav-link px-3 sidebar-link"
-                data-bs-toggle="collapse"
-                href="#collapseExample"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                <i class="bi bi-layout-split"></i>
-                <span class="text-uppercase ms-2 active text-white">
-                  interfaces
-                </span>
-                <i class="bi bi-chevron-down right-link ms-auto"></i>
-              </a> -->
             <div class="collapse" id="collapseExample">
               <div>
                 <a href="#" class="nav-link mx-3 active">
@@ -239,23 +214,8 @@
               </div>
             </div>
 
-            <!-- <li>
-              <a href="#" class="nav-link mx-3 active">
-                <span class="me-2">
-                  <i class="bi bi-file-earmark-fill"></i>
-                </span>
-                <span> PAGES </span>
-              </a>
-            </li> -->
-
-            <li id="dashboardLink">
-              <hr class="my-4" />
-            </li>
-
             <li id="tableLink">
-              <span class="text-uppercase text-muted fw-bold mx-3">
-                Tables
-              </span>
+              <span class="text-uppercase text-muted fw-bold mx-3"> Core </span>
             </li>
 
             <li id="pendingList" class="nav-item active">
@@ -331,6 +291,7 @@
         </nav>
       </div>
     </div>
+
     <!--// offcanvas -->
 
     <!-- main -->
@@ -703,6 +664,7 @@
                   </tr>
                 </tbody>
               </table>
+
               <div class="table-responsive">
                 <!-- <table
                     id="example"
@@ -783,7 +745,7 @@
     <!-- <script src="/admin.js"></script> -->
 
     <script>
-      const API_LOCAL = "https://bookiva-backend.vercel.app";
+      const API_LOCAL = "http://localhost:3500";
       let NAME, Name, EMAIL;
       menu();
       async function menu() {
@@ -804,10 +766,11 @@
 
           if (NAME.role == "USER") {
             location.href = "/venues/";
-          } else if (NAME.role == "MANAGEMENT") {
-            location.href = "/management/";
           }
         }
+        //  else if (NAME.role == "MANAGEMENT") {
+        //   location.href = "/management/";
+        // }
       }
 
       $(document).ready(function () {
@@ -954,6 +917,7 @@
       // Function to create a new table element with the provided bookings data and type
       const createTable = (bookings, type) => {
         // $(".table-responsive").empty();
+        console.log(bookings);
 
         const tableId = `admin-${type}-records`;
         $("#animation-table").remove();
@@ -1074,32 +1038,6 @@
               newRow.append(
                 `<td><button style="${viewDetailsButtonStyle}" id="view" >View</button></td>`
               );
-
-              // allUsers.forEach((currUser)=>{
-              //   if(currUser['name']==booking.name){
-              //     const originalIndex = allUsers.findIndex(item => item === currUser);
-
-              //     let viewDetailsButtonStyle = "background-color: #ffaf00; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;";
-              //     newRow.append(`<td><button style="${viewDetailsButtonStyle}" id="view" >View</button></td>`);
-
-              //     console.log(currUser,currUser.blockStatus)
-              //     // if (currUser.blockStatus==true) {
-              //     //   console.log("fffffff")
-              //     //   newRow.css("color", "red"); // Fading the row if block status is true
-              //     //   userButtonStyle = "background-color: #FF0800; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;";
-
-              //     //   newRow.append(`<td><button style="${userButtonStyle}"  onclick="updateUserStatus(${originalIndex}, '${tableId}', '${allUsers}')">Unblock</button></td>`);
-
-              //     // } else {
-              //     //   console.log("eeeee")
-              //     //   userButtonStyle = "background-color: #007FFF; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;";
-
-              //     //   newRow.append(`<td><button style="${userButtonStyle}"  onclick="updateUserStatus(${originalIndex}, '${tableId}', '${allUsers}')">Block</button></td>`);
-              //     // }
-              //       // console.log(originalIndex)
-              //   }
-
-              // })
             }
 
             tbody.append(newRow);
@@ -1121,7 +1059,7 @@
           const userData = await userRecords.json();
           $("#animation-table").remove();
           allUsers = userData;
-
+          console.log(allUsers);
           const newTable = createUsers(userData, currentState);
           // Clear existing table data
           $(".table-responsive").empty();
@@ -1149,7 +1087,7 @@
             return;
           }
           const data = await response.json();
-          $("#animation-table").remove();
+          // $("#animation-table").remove();
           // Assuming data structure is consistent
           dataPending = data.pendingBookings;
           dataAllowed = data.acceptedBookings;
@@ -1188,7 +1126,7 @@
       // Click event handlers for navigation links
       $(document).ready(function () {
         // Click event handler for pending link
-        $("#navbar li:nth-child(6)").click(function () {
+        $("#navbar li:nth-child(4)").click(function () {
           $("#recordsTitle").text("Pending Records");
 
           if (currentState != "pending") {
@@ -1201,7 +1139,7 @@
         });
 
         // Click event handler for accepted link
-        $("#navbar li:nth-child(7)").click(function () {
+        $("#navbar li:nth-child(5)").click(function () {
           $("#recordsTitle").text("Accepted Records");
 
           if (currentState != "accepted") {
@@ -1214,7 +1152,7 @@
         });
 
         // Click event handler for denied link
-        $("#navbar li:nth-child(8)").click(function () {
+        $("#navbar li:nth-child(6)").click(function () {
           $("#recordsTitle").text("Denied Records");
 
           if (currentState != "denied") {
@@ -1223,11 +1161,11 @@
             setCurrentState("denied");
 
             fetchAndDisplayData();
-            // updateTable(dataDenied, 'denied');
+            updateTable(dataDenied, "denied");
           }
         });
 
-        $("#navbar li:nth-child(11)").click(function () {
+        $("#navbar li:nth-child(9)").click(function () {
           $("#recordsTitle").text("Users List");
 
           if (currentState != "allUsers") {
@@ -1237,11 +1175,11 @@
             getUsers();
 
             // fetchAndDisplayData();
-            // updateTable(allUsers, 'allUsers');
+            updateTable(allUsers, "allUsers");
           }
         });
 
-        $("#navbar li:nth-child(12)").click(function () {
+        $("#navbar li:nth-child(10)").click(function () {
           $("#recordsTitle").text("Cancelled Events");
 
           if (currentState != "cancelled") {
@@ -1258,7 +1196,20 @@
 
       // Function to initialize DataTable for the table with given ID
       const initializeDataTable = (tableId) => {
-        $(`#${tableId}`).DataTable();
+        console.log(tableId);
+        $(`#${tableId}`).DataTable({
+          fixedColumns: {
+            start: 1, // Fix the first column
+            end: 1, // Fix the last column
+          },
+          language: {
+            paginate: {
+              next: ">>",
+              previous: "<<",
+            },
+          },
+          dom: '<"top"pfl<"clear">>rt<"bottom"ip<"clear">>',
+        });
       };
 
       // // Function to update the table with given data and type
@@ -1875,12 +1826,11 @@
     </style>
 
     <style>
-      /* Custom styling for the search bar */
       .dataTables_filter input[type="search"] {
-        /* Your custom styles here */
-        border: 1px solid #ccc; /* Example border */
-        padding: 7px; /* Example padding */
-        border-radius: 20px; /* Example border radius */
+        border: 1px solid #ccc;
+        padding: 7px;
+        border-radius: 20px;
+        margin-right: 10px;
       }
     </style>
   </body>
