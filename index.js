@@ -5,8 +5,8 @@ if (
     currlocation == "http://localhost:5173/" ||
     currlocation == "http://localhost:5173/index.html" ||
     currlocation == "http://localhost:5173/index" ||
-    currlocation == "https://bookiva-incubation.vercel.app/index" ||
-    currlocation == "https://bookiva-incubation.vercel.app/index" ||
+    currlocation == "https://bookiva-incubation.vercel.app/" ||
+    currlocation == "https://bookiva-incubation.vercel.app/index.html" ||
     currlocation == "https://bookiva-incubation.vercel.app/index"
   )
 ) {
