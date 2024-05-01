@@ -54,7 +54,7 @@
     <!-- Your additional stylesheets -->
     <style>
       /* Your custom styles here */
-      .dataTables_filter input[type="search"] {
+       .dataTables_filter input[type="search"] {
         border: 1px solid #ccc;
         padding: 7px;
         border-radius: 20px;
@@ -100,42 +100,25 @@
     <nav class="navbar navbar-expand-lg bg-light navbar-dark fixed-top p-2">
       <div class="container-fluid text-white">
         <!-- sidenavbar trigger -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          id="sidebarToggle"
+          <i
+          class="bx bx-menu"
+          style="color: rgb(0, 0, 0); font-size: 35px"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasExample"
           aria-controls="offcanvasExample"
           aria-label="Toggle navigation"
-        >
-          <span
-            class="navbar-toggler-icon"
-            style="background-color: black"
-          ></span>
-        </button>
+        ></i>
 
         <!-- //sidenavbar trigger -->
         <!-- <img class="d-flex ms-auto" src="public/images/logo.png" alt="" style="width: 100px;"> -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <img
+           <img
             src="/images/bookiva4.png"
-            alt="bookiva"
+            alt=""
             style="width: 130px; margin-left: 700px"
             class="logo-img"
           />
-          <!-- <img
+<!--           <img
             src="/images/icon2.png"
             alt=""
             style="width: 25px; margin-left: 750px"
@@ -196,7 +179,7 @@
       id="offcanvasExample"
       aria-labelledby="offcanvasExampleLabel"
     >
-      <div class="offcanvas-body p-0 mt-3" style="background-color: black">
+       <div class="offcanvas-body p-0 mt-3" style="background-color: black">
         <nav class="navbar-dark">
           <ul class="navbar-nav text-white" id="navbar">
             <li id="dashboardLink">
@@ -291,7 +274,6 @@
         </nav>
       </div>
     </div>
-
     <!--// offcanvas -->
 
     <!-- main -->
@@ -664,7 +646,6 @@
                   </tr>
                 </tbody>
               </table>
-
               <div class="table-responsive">
                 <!-- <table
                     id="example"
@@ -766,11 +747,11 @@
 
           if (NAME.role == "USER") {
             location.href = "/venues/";
-          }
+          } 
+          // else if (NAME.role == "MANAGEMENT") {
+          //   location.href = "/management/";
+          // }
         }
-        //  else if (NAME.role == "MANAGEMENT") {
-        //   location.href = "/management/";
-        // }
       }
 
       $(document).ready(function () {
@@ -917,7 +898,6 @@
       // Function to create a new table element with the provided bookings data and type
       const createTable = (bookings, type) => {
         // $(".table-responsive").empty();
-        console.log(bookings);
 
         const tableId = `admin-${type}-records`;
         $("#animation-table").remove();
@@ -1013,14 +993,16 @@
               if (booking.status === "denied_temp") {
                 acceptButtonStyle =
                   "background-color: #009150; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;opacity: 0.5;cursor: not-allowed;";
+                newRow.append(
+                  `<td><button style="${acceptButtonStyle}">Accept</button></td>`
+                );
               } else {
                 acceptButtonStyle =
                   "background-color: #009150; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;";
+                newRow.append(
+                  `<td><button style="${acceptButtonStyle}" onclick="acceptBooking(${index}, 'admin-${currentState}-records', '${currentState}')" data-index="${index}" id="act">Accept</button></td>`
+                );
               }
-
-              newRow.append(
-                `<td><button style="${acceptButtonStyle}" onclick="acceptBooking(${index}, '${tableId}', '${dataPending}')" data-index="${index}" id="act" >Accept</button></td>`
-              );
               newRow.append(
                 `<td><button style="${rejectButtonStyle}" onclick="rejectBooking(${index}, '${tableId}', '${dataPending}')" data-index="${index}" id="rej">Reject</button></td>`
               );
@@ -1059,7 +1041,7 @@
           const userData = await userRecords.json();
           $("#animation-table").remove();
           allUsers = userData;
-          console.log(allUsers);
+
           const newTable = createUsers(userData, currentState);
           // Clear existing table data
           $(".table-responsive").empty();
@@ -1087,7 +1069,7 @@
             return;
           }
           const data = await response.json();
-          // $("#animation-table").remove();
+          $("#animation-table").remove();
           // Assuming data structure is consistent
           dataPending = data.pendingBookings;
           dataAllowed = data.acceptedBookings;
@@ -1161,7 +1143,7 @@
             setCurrentState("denied");
 
             fetchAndDisplayData();
-            updateTable(dataDenied, "denied");
+            // updateTable(dataDenied, 'denied');
           }
         });
 
@@ -1175,7 +1157,7 @@
             getUsers();
 
             // fetchAndDisplayData();
-            updateTable(allUsers, "allUsers");
+            // updateTable(allUsers, 'allUsers');
           }
         });
 
@@ -1195,13 +1177,8 @@
       });
 
       // Function to initialize DataTable for the table with given ID
-      const initializeDataTable = (tableId) => {
-        console.log(tableId);
+       const initializeDataTable = (tableId) => {
         $(`#${tableId}`).DataTable({
-          fixedColumns: {
-            start: 1, // Fix the first column
-            end: 1, // Fix the last column
-          },
           language: {
             paginate: {
               next: ">>",
@@ -1398,15 +1375,18 @@
               if (booking.status === "denied_temp") {
                 acceptButtonStyle =
                   "background-color: #009150; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;opacity: 0.5;cursor: not-allowed;";
+                newRow.append(
+                  `<td><button style="${acceptButtonStyle}">Accept</button></td>`
+                );
               } else {
                 acceptButtonStyle =
                   "background-color: #009150; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;";
+                newRow.append(
+                  `<td><button style="${acceptButtonStyle}" onclick="acceptBooking(${originalIndex}, 'admin-${currentState}-records', '${currentState}')" data-index="${originalIndex}" id="act">Accept</button></td>`
+                );
               }
               newRow.append(
-                `<td><button style="${acceptButtonStyle}" onclick="acceptBooking(${originalIndex}, 'admin-${currentState}-records', '${currentState}')" data-index="${originalIndex}" id="act">Accept</button></td>`
-              );
-              newRow.append(
-                `<td><button style="${rejectButtonStyle}" onclick="rejectBooking(${originalIndex}, 'admin-${currentState}-records', '${currentState}')" data-index="${originalIndex}" id="rej">Reject</button></td>`
+                `<td><button style="${rejectButtonStyle}" onclick="rejectBooking(${index}, '${tableId}', '${dataPending}')" data-index="${index}" id="rej">Reject</button></td>`
               );
             } else if (currentState === "accepted") {
               newRow.append(
@@ -1826,7 +1806,7 @@
     </style>
 
     <style>
-      .dataTables_filter input[type="search"] {
+       .dataTables_filter input[type="search"] {
         border: 1px solid #ccc;
         padding: 7px;
         border-radius: 20px;
