@@ -223,12 +223,21 @@ async function getprebook() {
   document.querySelector("#seats").setAttribute("max", SEATS);
 
   const userMenu = document.querySelector(".user-menu");
+const userNav = document.querySelector(".user-nav");
 
-  document.querySelector(".user-nav").addEventListener("click", (e) => {
-    //e.stopPropagation();
-    //e.preventDefault();
-    userMenu.classList.toggle("user-menu-hidden");
-  });
+userNav.addEventListener("click", (e) => {
+  e.stopPropagation();
+  userMenu.classList.toggle("user-menu-hidden");
+});
+
+document.addEventListener("click", (e) => {
+  const isClickedInsideUserNav = userNav.contains(e.target);
+  const isClickedInsideUserMenu = userMenu.contains(e.target);
+
+  if (!isClickedInsideUserNav && !isClickedInsideUserMenu) {
+    userMenu.classList.add("user-menu-hidden");
+  }
+});
   let response;
   getprofile();
   async function getprofile() {
