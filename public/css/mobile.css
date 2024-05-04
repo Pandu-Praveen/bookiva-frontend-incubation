@@ -80,6 +80,6 @@
 
   .form-date {
     grid-template-columns: none;
-    grid-template-rows: repeat(2, 1fr);
+/*     grid-template-rows: repeat(2, 1fr); */
   }
 }
