@@ -86,11 +86,20 @@ async function getmanagementprebook() {
 }
 
 const userMenu = document.querySelector(".user-menu");
+const userNav = document.querySelector(".user-nav");
 
-document.querySelector(".user-nav").addEventListener("click", (e) => {
-  //e.stopPropagation();
-  //e.preventDefault();
+userNav.addEventListener("click", (e) => {
+  e.stopPropagation();
   userMenu.classList.toggle("user-menu-hidden");
+});
+
+document.addEventListener("click", (e) => {
+  const isClickedInsideUserNav = userNav.contains(e.target);
+  const isClickedInsideUserMenu = userMenu.contains(e.target);
+
+  if (!isClickedInsideUserNav && !isClickedInsideUserMenu) {
+    userMenu.classList.add("user-menu-hidden");
+  }
 });
 Profile();
 let response, NAME;
