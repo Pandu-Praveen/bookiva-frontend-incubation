@@ -698,3 +698,7 @@ tr:nth-child(even) {
   border-radius: 5px;
   cursor: pointer;
 }
+.faded {
+    opacity: 0.5; 
+    pointer-events: none; 
+}
