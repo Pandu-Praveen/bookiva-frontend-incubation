@@ -82,4 +82,7 @@
     grid-template-columns: none;
 /*     grid-template-rows: repeat(2, 1fr); */
   }
+  .fs-2s {
+    font-size: 1rem;
+  }
 }
