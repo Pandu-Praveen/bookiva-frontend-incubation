@@ -34,6 +34,9 @@ const renderCalendar = async (venue, isManagement) => {
         formattedDates.push(date.split("-").reverse().join("-").trim());
       }
       const loginBtn = document.getElementById("login-btn");
+      loginBtn.innerText = "Loading...";
+      loginBtn.classList.add("faded");
+      loginBtn.disabled = true;
       if (isManagement) {
         async function managementprebook() {
           await fetch(API_LOCAL + "/managementprebook", {
@@ -45,6 +48,9 @@ const renderCalendar = async (venue, isManagement) => {
             credentials: "include",
           }).then((res) => {
             if (res.status === 200) {
+              loginBtn.innerText = "Book Now";
+              loginBtn.classList.remove("faded");
+              loginBtn.disabled = false; 
               loginBtn.setAttribute("href", "/managementbook/");
             }
           });
@@ -62,6 +68,9 @@ const renderCalendar = async (venue, isManagement) => {
             credentials: "include",
           }).then((res) => {
             if (res.status === 200) {
+              loginBtn.innerText = "Book Now";
+              loginBtn.classList.remove("faded");
+              loginBtn.disabled = false;
               loginBtn.setAttribute("href", "/book/");
             }
           });
