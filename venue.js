@@ -277,9 +277,7 @@ function renderModal(venue) {
                               `<div class="swiper-slide"><img src="${img}"></div>`
                           )
                           .join("\n")}
-                        <div class="swiper-slide"><img src="/images/sigma1.jpeg"></div>
-                        <div class="swiper-slide"><img src="/images/sigma2.jpeg"></div>
-                        <div class="swiper-slide"><img src="/images/sigma3.jpeg"></div>
+                  
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
