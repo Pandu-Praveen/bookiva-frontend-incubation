@@ -128,7 +128,8 @@ function renderVenues(venues) {
   venues.forEach((cardData) => {
     renderedCards += `<div class="hall-card">
             <div class="hall-img">
-                <img src="${cardData.imgUrl}" alt="${cardData.hallName}">
+                <img src="${cardData.imgUrl}" alt="${cardData.hallName}" 
+                     style="width: 100%; height:200px; object-fit: cover; object-position: center;">  
             </div>
             <div class="hall-info ff-inter">
                 <div class="hall-name-star">
