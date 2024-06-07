@@ -1705,7 +1705,7 @@ document
     }
   });
 document
-  .querySelector("#sidebar .side-menu li:nth-child(2) a.logout")
+  .querySelector("#sidebar .side-menu li:nth-child(3) a.logout")
   .addEventListener("click", async function (event) {
     event.preventDefault();
     const res = await fetch(API_LOCAL + "/logout", {
