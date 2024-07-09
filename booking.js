@@ -38,7 +38,7 @@ async function getprebook() {
   });
   haLL = await re.json();
   console.log(haLL);
-  const hallName = haLL.hallname;
+  const hallName = haLL.HALL;
   const venue = await fetch(API_LOCAL + "/venues", {
       method: "POST",
       headers: {
