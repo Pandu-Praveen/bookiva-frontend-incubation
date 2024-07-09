@@ -299,17 +299,15 @@ function renderModal(venue) {
                             <p class="ff-inter fs-2s"><i data-feather="info"></i> Is projector available? - ${
                               hall.projectorAvailable ? "Yes" : "No"
                             }</p>
-                            <p class="ff-inter fs-2s"><i data-feather="info"></i> Is the hall reserved? - ${
-                              hall.isReserved ? "Yes" : "No"
-                            }</p>
+                           
                             ${
                               hall.isReserved
                                 ? `<p class="ff-inter fs-2s"><i data-feather="info"></i> Hall reserved by: ${hall.reservedBy}</p>`
                                 : ""
                             }
-                            <p class="ff-inter fs-2s"><i data-feather="info"></i> Distance from main gate: ${
+                            <p class="ff-inter fs-2s"><i data-feather="info"></i> Distance from main gate - ${
                               hall.distFromGate
-                            }</p>
+                            } Meters</p>
                             <p class="ff-inter fs-2s"><i data-feather="info"></i> Location: ${
                               hall.location
                             }</p>
