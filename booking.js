@@ -48,7 +48,7 @@ async function getprebook() {
       credentials: "include",
     });
     const data = await venue.json();
-  console.log(data);
+  console.log(data,data.imgUrl);
   if (re.status != 200) {
     //alert("Some error found in selecting hall.Please try again!");
     location.href = "/venues/";
