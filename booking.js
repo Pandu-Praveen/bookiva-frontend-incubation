@@ -38,7 +38,7 @@ async function getprebook() {
   });
   haLL = await re.json();
   const hallName = haLL.hallname;
-  const response = await fetch(API_LOCAL + "/venues", {
+  const venue = await fetch(API_LOCAL + "/venues", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ async function getprebook() {
       body: JSON.stringify({ hallName }),
       credentials: "include",
     });
-    data = await response.json();
+    data = await venue.json();
   console.log(data);
   if (re.status != 200) {
     //alert("Some error found in selecting hall.Please try again!");
