@@ -37,6 +37,17 @@ async function getprebook() {
     },
   });
   haLL = await re.json();
+  const hallName = haLL.hallname;
+  const response = await fetch(API_LOCAL + "/venues", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ hallName }),
+      credentials: "include",
+    });
+    data = await response.json();
+  console.log(data);
   if (re.status != 200) {
     //alert("Some error found in selecting hall.Please try again!");
     location.href = "/venues/";
@@ -203,7 +214,7 @@ async function getprebook() {
   document.querySelector(".hall-name").innerHTML = HALL;
   document
     .querySelector(".hall-image")
-    .setAttribute("src", "/images/sigma1.jpeg");
+    .setAttribute("src", data.imgUrl);
   let date = new Date(DATE);
 
   // Get the year, month, and day
