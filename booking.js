@@ -47,7 +47,7 @@ async function getprebook() {
       body: JSON.stringify({ hallName }),
       credentials: "include",
     });
-    data = await venue.json();
+    const data = await venue.json();
   console.log(data);
   if (re.status != 200) {
     //alert("Some error found in selecting hall.Please try again!");
