@@ -293,13 +293,13 @@ function renderModal(venue) {
                             <p class="ff-inter fs-2s"><i data-feather="info"></i> Number of seats: ${
                               hall.seatingCapacity
                             }</p>
-                            <p class="ff-inter fs-2s"><i data-feather="info"></i> Has AC? ${
+                            <p class="ff-inter fs-2s"><i data-feather="info"></i> Has AC? - ${
                               hall.hasAC ? "Yes" : "No"
                             }</p>
-                            <p class="ff-inter fs-2s"><i data-feather="info"></i> Is projector available? ${
+                            <p class="ff-inter fs-2s"><i data-feather="info"></i> Is projector available? - ${
                               hall.projectorAvailable ? "Yes" : "No"
                             }</p>
-                            <p class="ff-inter fs-2s"><i data-feather="info"></i> Is the hall reserved? ${
+                            <p class="ff-inter fs-2s"><i data-feather="info"></i> Is the hall reserved? - ${
                               hall.isReserved ? "Yes" : "No"
                             }</p>
                             ${
