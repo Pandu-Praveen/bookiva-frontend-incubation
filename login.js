@@ -1,4 +1,6 @@
 import { API_LOCAL } from "./config";
+
+function handleUser(){
 const token = localStorage.getItem('jwt');
 console.log(token)
 fetch(API_LOCAL + "/profile", {
@@ -25,7 +27,7 @@ fetch(API_LOCAL + "/profile", {
       location.href = "/venues/";
     }
   });
-
+}
 const formEl = document.querySelector(".form");
 
 formEl.addEventListener("submit", async (event) => {
@@ -52,6 +54,7 @@ formEl.addEventListener("submit", async (event) => {
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
         localStorage.setItem('jwt', data.token);
+        handleUser();
         console.log("Welcome");
         if (data.role == "ADMIN") {
           location.href = "/admin/";
