@@ -154,9 +154,12 @@ function renderVenues(venues) {
       e.preventDefault();
       checkuseravailable();
       async function checkuseravailable() {
+        const token = localStorage.getItem('jwt');
+        console.log(token)
         await fetch(API_LOCAL + "/profile", {
           credentials: "include", // Include cookies with the request
           headers: {
+            'Authorization': `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }).then((res) => {
@@ -209,9 +212,12 @@ function openModal(venue) {
 let NAME, Name, EMAIL;
 menu();
 async function menu() {
+  const token = localStorage.getItem('jwt');
+  console.log(token)
   const response = await fetch(API_LOCAL + "/profile", {
     credentials: "include", // Include cookies with the request
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
