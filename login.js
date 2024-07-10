@@ -57,7 +57,7 @@ formEl.addEventListener("submit", async (event) => {
         } else if (data.role == "MANAGEMENT") {
           location.href = "/management/";
         } else if (data.role == "USER") {
-          location.href = "/venues/";
+          // location.href = "/venues/";
         }
       } else if (data.message === "Invalid email") {
         alert("Invalid Email or Password");
