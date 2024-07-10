@@ -20,7 +20,7 @@ fetch(API_LOCAL + "/profile", {
     } else if (data.role == "ADMIN") {
       location.href = "/admin/";
     } else if (data.role == "USER") {
-      location.href = "/venues/";
+      // location.href = "/venues/";
     }
   });
 
