@@ -102,11 +102,13 @@ window.addEventListener("DOMContentLoaded", async () => {
   const queryString = window.location.search;
   const encryptedFormData = queryString.slice(1, queryString.length);
   const hallName = decodeURIComponent(encryptedFormData);
+  const token = localStorage.getItem('jwt');
   // console.log(encryptedFormData, hallName);
   try {
     const response = await fetch(API_LOCAL + "/venues", {
       method: "POST",
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ hallName }),
