@@ -40,7 +40,7 @@ const renderCalendar = async (venue, isManagement) => {
       if (isManagement) {
         async function managementprebook() {
           const token = localStorage.getItem('jwt');
-        console.log(token)
+        
           await fetch(API_LOCAL + "/managementprebook", {
             method: "POST",
             headers: {
@@ -63,7 +63,7 @@ const renderCalendar = async (venue, isManagement) => {
         DATE = formattedDates[0];
         async function userprebook() {
           const token = localStorage.getItem('jwt');
-          console.log(token)
+          
           await fetch(API_LOCAL + "/prebook", {
             method: "POST",
             headers: {
@@ -161,7 +161,7 @@ function renderVenues(venues) {
       checkuseravailable();
       async function checkuseravailable() {
         const token = localStorage.getItem('jwt');
-        console.log(token)
+       
         await fetch(API_LOCAL + "/profile", {
           credentials: "include", // Include cookies with the request
           headers: {
@@ -219,7 +219,7 @@ let NAME, Name, EMAIL;
 menu();
 async function menu() {
   const token = localStorage.getItem('jwt');
-  console.log(token)
+ 
   const response = await fetch(API_LOCAL + "/profile", {
     credentials: "include", // Include cookies with the request
     headers: {
@@ -257,7 +257,7 @@ async function menu() {
     document.querySelector(".log-out").addEventListener("click", async (e) => {
       // Function to delete a cookie
       const token = localStorage.getItem('jwt');
-        console.log(token)
+        
       const res = await fetch(API_LOCAL + "/logout", {
         credentials: "include", // Include cookies with the request
         headers: {
