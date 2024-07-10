@@ -1,8 +1,10 @@
 import { API_LOCAL } from "./config";
-
+function handleUser(){
+  const token = localStorage.getItem('jwt');
 fetch(API_LOCAL + "/profile", {
   // Include cookies with the request
   headers: {
+    'Authorization': `Bearer ${token}`,
     "Content-Type": "application/json",
   },
   credentials: "include",
@@ -23,6 +25,7 @@ fetch(API_LOCAL + "/profile", {
       location.href = `/venues/?${encryptedFormData}`;
     }
   });
+}
 const formEl = document.querySelector(".form");
 const queryString = window.location.search;
 const encryptedFormData = queryString.slice(1, queryString.length);
@@ -37,6 +40,7 @@ formEl.addEventListener("submit", async (event) => {
     //mode: 'cors',
     method: "POST",
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, name }),
@@ -49,7 +53,9 @@ formEl.addEventListener("submit", async (event) => {
         location.href = "/block/";
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
+        localStorage.setItem('jwt', data.token);
         console.log("Welcome");
+        handleUser();
         location.href = `/venues/?${encryptedFormData}`;
       } else if (data.message === "Internal server error") {
         alert("Internal server error");
