@@ -83,7 +83,7 @@ function setCookie(name, value, days) {
   const domain = "domain=.vercel.app"; // Set domain to .vercel.app
   const path = "path=/"; // Ensure the cookie is available on all paths
   const secure = "Secure"; // Ensure cookies are sent only over HTTPS
-  const sameSite = "SameSite=Strict"; // Prevent CSRF attacks
+  const sameSite = "SameSite=none"; // Prevent CSRF attacks
 
   document.cookie = `${name}=${value};${expires};${domain};${path};${secure};${sameSite}`;
 }
