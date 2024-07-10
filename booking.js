@@ -1,10 +1,8 @@
 checkuseravailable();
 async function checkuseravailable() {
-   const token = localStorage.getItem('jwt');
   await fetch(API_LOCAL + "/profile", {
     credentials: "include", // Include cookies with the request
     headers: {
-      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   }).then((res) => {
@@ -32,11 +30,9 @@ let re,
 feather.replace();
 getprebook();
 async function getprebook() {
-   const token = localStorage.getItem('jwt');
   re = await fetch(API_LOCAL + "/getprebook", {
     credentials: "include", // Include cookies with the request
     headers: {
-      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
@@ -46,7 +42,6 @@ async function getprebook() {
   const venue = await fetch(API_LOCAL + "/venues", {
       method: "POST",
       headers: {
-        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ hallName }),
@@ -258,11 +253,9 @@ document.addEventListener("click", (e) => {
   let response;
   getprofile();
   async function getprofile() {
-     const token = localStorage.getItem('jwt');
     response = await fetch(API_LOCAL + "/profile", {
       credentials: "include", // Include cookies with the request
       headers: {
-        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
@@ -297,11 +290,9 @@ document.addEventListener("click", (e) => {
         //   event.preventDefault();
         // Perform the logout logic here, such as removing the user token or redirecting to the login page
         // Function to delete a cookie
-         const token = localStorage.getItem('jwt');
         const logout = fetch(API_LOCAL + "/logout", {
           credentials: "include", // Include cookies with the request
           headers: {
-            'Authorization': `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         });
@@ -441,12 +432,10 @@ confirmButton.addEventListener("click", async (e) => {
   // console.log(count);
   book();
   async function book() {
-     const token = localStorage.getItem('jwt');
     await fetch(API_LOCAL + "/book", {
       //mode: 'cors',
       method: "POST",
       headers: {
-        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(submissionData),
