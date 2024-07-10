@@ -49,6 +49,7 @@ formEl.addEventListener("submit", async (event) => {
         location.href = "/block/";
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
+        localStorage.setItem('jwt', data.token);
         console.log("Welcome");
         if (data.role == "ADMIN") {
           location.href = "/admin/";
