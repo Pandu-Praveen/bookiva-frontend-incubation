@@ -152,16 +152,16 @@ function renderVenues(venues) {
       e.preventDefault();
       checkuseravailable();
       async function checkuseravailable() {
-        // await fetch(API_LOCAL + "/profile", {
-        //   credentials: "include", // Include cookies with the request
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        // }).then((res) => {
-        //   if (res.status === 401) {
-        //     location.href = "/login/";
-        //   }
-        // });
+        await fetch(API_LOCAL + "/profile", {
+          credentials: "include", // Include cookies with the request
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then((res) => {
+          if (res.status === 401) {
+            location.href = "/login/";
+          }
+        });
       }
       openModal(e.target.dataset.venue);
     });
@@ -207,12 +207,12 @@ function openModal(venue) {
 let NAME, Name, EMAIL;
 menu();
 async function menu() {
-  // const response = await fetch(API_LOCAL + "/profile", {
-  //   credentials: "include", // Include cookies with the request
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
+  const response = await fetch(API_LOCAL + "/profile", {
+    credentials: "include", // Include cookies with the request
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   NAME = await response.json();
   Name = NAME.name;
   EMAIL = NAME.email;
