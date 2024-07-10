@@ -33,12 +33,6 @@ formEl.addEventListener("submit", async (event) => {
   var signBtn = document.getElementById("signin");
   signBtn.innerHTML = `<span class="loader" style="border-top: 3px solid #fff;height: 24px; width: 24px;"></span>`;
   signBtn.classList.add("disabled");
-  function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-  }
   await fetch(API_LOCAL + "/mobileUser", {
     //mode: 'cors',
     method: "POST",
@@ -56,7 +50,6 @@ formEl.addEventListener("submit", async (event) => {
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
         console.log("Welcome");
-        setCookie('jwt', data.token, 7);
         location.href = `/venues/?${encryptedFormData}`;
       } else if (data.message === "Internal server error") {
         alert("Internal server error");
