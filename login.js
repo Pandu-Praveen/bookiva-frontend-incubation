@@ -80,7 +80,12 @@ function setCookie(name, value, days) {
   const date = new Date();
   date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
   const expires = "expires=" + date.toUTCString();
-  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  const domain = "domain=.vercel.app"; // Set domain to .vercel.app
+  const path = "path=/"; // Ensure the cookie is available on all paths
+  const secure = "Secure"; // Ensure cookies are sent only over HTTPS
+  const sameSite = "SameSite=Strict"; // Prevent CSRF attacks
+
+  document.cookie = `${name}=${value};${expires};${domain};${path};${secure};${sameSite}`;
 }
 
 // window.addEventListener('popstate', function(event) {
