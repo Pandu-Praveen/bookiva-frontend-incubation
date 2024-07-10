@@ -1,8 +1,9 @@
 import { API_LOCAL } from "./config";
-
+const token = localStorage.getItem('jwt');
 fetch(API_LOCAL + "/profile", {
   // Include cookies with the request
   headers: {
+    'Authorization': `Bearer ${token}`,
     "Content-Type": "application/json",
   },
   credentials: "include",
