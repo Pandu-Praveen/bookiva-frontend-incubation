@@ -1,10 +1,8 @@
 import { API_LOCAL } from "./config";
-function handleUser(){
-  const token = localStorage.getItem('jwt');
+
 fetch(API_LOCAL + "/profile", {
   // Include cookies with the request
   headers: {
-    'Authorization': `Bearer ${token}`,
     "Content-Type": "application/json",
   },
   credentials: "include",
@@ -25,7 +23,6 @@ fetch(API_LOCAL + "/profile", {
       location.href = `/venues/?${encryptedFormData}`;
     }
   });
-}
 const formEl = document.querySelector(".form");
 const queryString = window.location.search;
 const encryptedFormData = queryString.slice(1, queryString.length);
@@ -36,6 +33,12 @@ formEl.addEventListener("submit", async (event) => {
   var signBtn = document.getElementById("signin");
   signBtn.innerHTML = `<span class="loader" style="border-top: 3px solid #fff;height: 24px; width: 24px;"></span>`;
   signBtn.classList.add("disabled");
+  function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  }
   await fetch(API_LOCAL + "/mobileUser", {
     //mode: 'cors',
     method: "POST",
@@ -52,9 +55,8 @@ formEl.addEventListener("submit", async (event) => {
         location.href = "/block/";
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
-        localStorage.setItem('jwt', data.token);
         console.log("Welcome");
-        handleUser();
+        setCookie('jwt', data.token, 7);
         location.href = `/venues/?${encryptedFormData}`;
       } else if (data.message === "Internal server error") {
         alert("Internal server error");
