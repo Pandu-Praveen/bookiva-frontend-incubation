@@ -20,7 +20,7 @@ fetch(API_LOCAL + "/profile", {
     } else if (data.role == "ADMIN") {
       location.href = "/admin/";
     } else if (data.role == "USER") {
-      // location.href = "/venues/";
+      location.href = "/venues/";
     }
   });
 
@@ -49,15 +49,13 @@ formEl.addEventListener("submit", async (event) => {
         location.href = "/block/";
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
-        // localStorage.setItem('jwt', data.token);
-        setCookie('jwt', data.token, 7);
         console.log("Welcome");
         if (data.role == "ADMIN") {
           location.href = "/admin/";
         } else if (data.role == "MANAGEMENT") {
           location.href = "/management/";
         } else if (data.role == "USER") {
-          // location.href = "/venues/";
+          location.href = "/venues/";
         }
       } else if (data.message === "Invalid email") {
         alert("Invalid Email or Password");
@@ -72,21 +70,9 @@ formEl.addEventListener("submit", async (event) => {
         signBtn.innerHTML = `<span class="sign-in butt-main ff-inter fs-3s">Sign In</span>`;
         signBtn.classList.remove("disabled");
       }
-
     })
     .catch((error) => console.log(error));
 });
-function setCookie(name, value, days) {
-  const date = new Date();
-  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-  const expires = "expires=" + date.toUTCString();
-  const domain = "domain=.vercel.app"; // Set domain to .vercel.app
-  const path = "path=/"; // Ensure the cookie is available on all paths
-  const secure = "Secure"; // Ensure cookies are sent only over HTTPS
-  const sameSite = "SameSite=none"; // Prevent CSRF attacks
-
-  document.cookie = `${name}=${value};${expires};${domain};${path};${secure};${sameSite}`;
-}
 
 // window.addEventListener('popstate', function(event) {
 //     // Redirect to the home page when the user clicks the back button
