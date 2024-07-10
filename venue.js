@@ -39,12 +39,9 @@ const renderCalendar = async (venue, isManagement) => {
       loginBtn.disabled = true;
       if (isManagement) {
         async function managementprebook() {
-          const token = localStorage.getItem('jwt');
-        
           await fetch(API_LOCAL + "/managementprebook", {
             method: "POST",
             headers: {
-               'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ EMAIL, HALL, SEATS, DATES: formattedDates }),
@@ -62,12 +59,9 @@ const renderCalendar = async (venue, isManagement) => {
       } else {
         DATE = formattedDates[0];
         async function userprebook() {
-          const token = localStorage.getItem('jwt');
-          
           await fetch(API_LOCAL + "/prebook", {
             method: "POST",
             headers: {
-               'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ EMAIL, HALL, SEATS, DATE }),
@@ -108,13 +102,11 @@ window.addEventListener("DOMContentLoaded", async () => {
   const queryString = window.location.search;
   const encryptedFormData = queryString.slice(1, queryString.length);
   const hallName = decodeURIComponent(encryptedFormData);
-  const token = localStorage.getItem('jwt');
   // console.log(encryptedFormData, hallName);
   try {
     const response = await fetch(API_LOCAL + "/venues", {
       method: "POST",
       headers: {
-        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ hallName }),
@@ -160,12 +152,9 @@ function renderVenues(venues) {
       e.preventDefault();
       checkuseravailable();
       async function checkuseravailable() {
-        const token = localStorage.getItem('jwt');
-       
         await fetch(API_LOCAL + "/profile", {
           credentials: "include", // Include cookies with the request
           headers: {
-            'Authorization': `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }).then((res) => {
@@ -218,12 +207,9 @@ function openModal(venue) {
 let NAME, Name, EMAIL;
 menu();
 async function menu() {
-  const token = localStorage.getItem('jwt');
- 
   const response = await fetch(API_LOCAL + "/profile", {
     credentials: "include", // Include cookies with the request
     headers: {
-      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
@@ -256,12 +242,9 @@ async function menu() {
     // Add a logout click event listener
     document.querySelector(".log-out").addEventListener("click", async (e) => {
       // Function to delete a cookie
-      const token = localStorage.getItem('jwt');
-        
       const res = await fetch(API_LOCAL + "/logout", {
         credentials: "include", // Include cookies with the request
         headers: {
-           'Authorization': `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
