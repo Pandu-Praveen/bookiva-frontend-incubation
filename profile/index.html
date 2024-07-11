@@ -756,7 +756,7 @@
       rel="stylesheet"
     />
 
-    <script>
+    <script type="module">
       let currentState = "reservations";
 
       const downloadExcel = (tableid) => {
@@ -913,7 +913,9 @@
       }
     </style>
 
-    <script>
+    <script type="module">
+      import Cookies from "js-cookie";
+      const token =  Cookies.get("jwt");
       const API_LOCAL = "https://bookiva-backend-incubation.vercel.app";
       let NAME, Name, EMAIL;
       menu();
@@ -921,6 +923,7 @@
         const response = await fetch(API_LOCAL + "/profile", {
           credentials: "include", // Include cookies with the request
           headers: {
+            'Authorization': `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         });
@@ -1232,6 +1235,7 @@
             method: "POST",
             credentials: "include",
             headers: {
+              'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ updatedName, updatedCollege, updatedDept }),
@@ -1274,6 +1278,7 @@
             method: "POST",
             credentials: "include", // Include cookies with the request
             headers: {
+              'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
           });
@@ -1334,6 +1339,7 @@
                 method: "POST",
                 credentials: "include",
                 headers: {
+                  'Authorization': `Bearer ${token}`,
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ bookingId, cancellationReason }),
@@ -1363,6 +1369,7 @@
                 method: "POST",
                 credentials: "include", // Include cookies with the request
                 headers: {
+                  'Authorization': `Bearer ${token}`,
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ bookingId, bookingStatus }), // Pass the bookingId to the server
@@ -1760,10 +1767,12 @@
           const res = await fetch(API_LOCAL + "/logout", {
             credentials: "include", // Include cookies with the request
             headers: {
+              'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
           });
           if (res.status == 200) {
+            Cookies.remove('jwt', { path: '/' });
             location.href = "/login/";
           }
         });
