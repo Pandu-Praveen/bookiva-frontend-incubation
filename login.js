@@ -51,7 +51,7 @@ formEl.addEventListener("submit", async (event) => {
         location.href = "/block/";
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
-        Cookies.set("jwt", data.token);
+        Cookies.set("jwt", data.token, { expires: 1, path: '/' });
         console.log("Welcome");
         if (data.role == "ADMIN") {
           location.href = "/admin/";
