@@ -1,8 +1,10 @@
 import { API_LOCAL } from "./config";
-
+import Cookies from "js-cookie";
+const token =  Cookies.get("jwt");
 fetch(API_LOCAL + "/profile", {
   // Include cookies with the request
   headers: {
+    'Authorization': `Bearer ${token}`,
     "Content-Type": "application/json",
   },
   credentials: "include",
@@ -49,6 +51,7 @@ formEl.addEventListener("submit", async (event) => {
         location.href = "/block/";
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
+        Cookies.set("jwt", data.token);
         console.log("Welcome");
         location.href = `/venues/?${encryptedFormData}`;
       } else if (data.message === "Internal server error") {
