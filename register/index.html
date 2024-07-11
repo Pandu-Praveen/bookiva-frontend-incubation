@@ -208,7 +208,7 @@
                 alert("This email is already exists,try the new one!");
                 signBtn.innerHTML = `<span class="sign-in butt-main ff-inter fs-3s">Register</span>`;
                 signBtn.classList.remove("disabled");
-              } else if (res.status === 201) {
+              } else if (res.status === 200) {
                 alert("Registration is completed successfully,kindly login");
                 signBtn.innerHTML = `<span class="sign-in butt-main ff-inter fs-3s">Register</span>`;
                 signBtn.classList.remove("disabled");
