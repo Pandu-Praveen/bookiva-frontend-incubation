@@ -51,7 +51,7 @@ formEl.addEventListener("submit", async (event) => {
         location.href = "/block/";
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
-        Cookies.set("jwt", data.token);
+        Cookies.set("jwt", data.token, { expires: 7, path: '/' });
         console.log("Welcome");
         location.href = `/venues/?${encryptedFormData}`;
       } else if (data.message === "Internal server error") {
