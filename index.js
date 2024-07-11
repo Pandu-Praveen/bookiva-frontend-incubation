@@ -1,4 +1,6 @@
 import { API_LOCAL } from "./config";
+import Cookies from "js-cookie";
+const token =  Cookies.get("jwt");
 const currlocation = location.href;
 if (
   !(
@@ -45,6 +47,7 @@ async function fetchProfile() {
     const response = await fetch(API_LOCAL + "/profile", {
       credentials: "include",
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
@@ -101,9 +104,11 @@ function renderUserMenu(name, role) {
         await fetch(API_LOCAL + "/logout", {
           credentials: "include",
           headers: {
+            'Authorization': `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         });
+        Cookies.remove('jwt', { path: '/' });
         location.href = "/login/"; // Simplified redirection logic
       } catch (error) {
         console.error("Error logging out:", error);
