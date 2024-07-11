@@ -2,11 +2,13 @@
 // import { onAuthStateChanged, signOut } from "firebase/auth";
 
 import { API_LOCAL } from "./config";
-
+import Cookies from "js-cookie";
+const token =  Cookies.get("jwt");
 // import printJS from "print-js";
 fetch(API_LOCAL + "/profile", {
   credentials: "include", // Include cookies with the request
   headers: {
+    'Authorization': `Bearer ${token}`,
     "Content-Type": "application/json",
   },
 })
@@ -45,6 +47,7 @@ async function getmanagementprebook() {
   const re = await fetch(API_LOCAL + "/getmanagementprebook", {
     credentials: "include", // Include cookies with the request
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
@@ -107,6 +110,7 @@ async function Profile() {
   response = await fetch(API_LOCAL + "/profile", {
     credentials: "include", // Include cookies with the request
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
@@ -137,18 +141,22 @@ async function Profile() {
       const logout = fetch(API_LOCAL + "/logout", {
         credentials: "include",
         headers: {
+          'Authorization': `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
+      Cookies.remove('jwt', { path: '/' });
       location.href = "/login/"; // Simplified redirection logic
     });
   } else {
     fetch(API_LOCAL + "/logout", {
       credentials: "include",
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
+    Cookies.remove('jwt', { path: '/' });
     location.href = "/login/";
   }
 }
@@ -281,6 +289,7 @@ confirmButton.addEventListener("click", async (e) => {
     //mode: 'cors',
     method: "POST",
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify(submissionData),
