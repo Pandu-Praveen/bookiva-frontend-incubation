@@ -1,11 +1,13 @@
 import { API_LOCAL } from "./config";
-
+import Cookies from "js-cookie";
+const token =  Cookies.get("jwt");
 let NAME, Name, EMAIL;
 menu();
 async function menu() {
   const response = await fetch(API_LOCAL + "/profile", {
     credentials: "include", // Include cookies with the request
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
@@ -281,6 +283,7 @@ const createProfile = () => {
       method: "POST",
       credentials: "include",
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ updatedName, updatedCollege, updatedDept }),
@@ -323,6 +326,7 @@ const fetchAndDisplayData = async () => {
       method: "POST",
       credentials: "include", // Include cookies with the request
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
@@ -376,6 +380,7 @@ $(document).on("click", ".bi-trash-fill", async function () {
         method: "POST",
         credentials: "include",
         headers: {
+          'Authorization': `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ bookingId, cancellationReason }),
@@ -404,6 +409,7 @@ $(document).on("click", ".bi-trash-fill", async function () {
           method: "POST",
           credentials: "include", // Include cookies with the request
           headers: {
+            'Authorization': `Bearer ${token}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ bookingId, bookingStatus }), // Pass the bookingId to the server
@@ -784,10 +790,12 @@ $(document).ready(function () {
     const res = await fetch(API_LOCAL + "/logout", {
       credentials: "include", // Include cookies with the request
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
     if (res.status == 200) {
+      Cookies.remove('jwt', { path: '/' });
       location.href = "/login/";
     }
     ClearHistory();
