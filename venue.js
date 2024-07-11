@@ -1,5 +1,6 @@
 import { API_LOCAL } from "./config";
-
+import Cookies from "js-cookie";
+const token =  Cookies.get("jwt");
 feather.replace();
 let HALL, DATE, SEATS;
 
@@ -42,6 +43,7 @@ const renderCalendar = async (venue, isManagement) => {
           await fetch(API_LOCAL + "/managementprebook", {
             method: "POST",
             headers: {
+              'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ EMAIL, HALL, SEATS, DATES: formattedDates }),
@@ -62,6 +64,7 @@ const renderCalendar = async (venue, isManagement) => {
           await fetch(API_LOCAL + "/prebook", {
             method: "POST",
             headers: {
+              'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ EMAIL, HALL, SEATS, DATE }),
@@ -107,6 +110,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     const response = await fetch(API_LOCAL + "/venues", {
       method: "POST",
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ hallName }),
@@ -245,6 +249,7 @@ async function menu() {
       const res = await fetch(API_LOCAL + "/logout", {
         credentials: "include", // Include cookies with the request
         headers: {
+          'Authorization': `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
