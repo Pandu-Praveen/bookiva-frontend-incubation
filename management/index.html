@@ -936,12 +936,18 @@
       }
     </style>
 
-    <script>
+    <script type="module">
+      import Cookies from "js-cookie";
+      const token =  Cookies.get("jwt");
       const API_LOCAL = "https://bookiva-backend-incubation.vercel.app";
       document.addEventListener("DOMContentLoaded", async function () {
         const response = await fetch(API_LOCAL + "/management", {
           mode: "cors",
           credentials: "include",
+	  headers: {
+            'Authorization': `Bearer ${token}`,
+            "Content-Type": "application/json",
+          }
         });
         // console.log(response)
         if (response.status == 401) {
@@ -1003,6 +1009,7 @@
               mode: "cors",
               method: "POST",
               headers: {
+		'Authorization': `Bearer ${token}`,
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({ name: adminName, email: adminEmail }),
@@ -1056,6 +1063,7 @@
                 mode: "cors",
                 method: "POST",
                 headers: {
+		  'Authorization': `Bearer ${token}`,
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ name, email }),
@@ -1179,6 +1187,7 @@
               mode: "cors",
               method: "POST",
               headers: {
+		'Authorization': `Bearer ${token}`,
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({ email: adminEmail }),
@@ -1233,6 +1242,7 @@
                 mode: "cors",
                 method: "POST",
                 headers: {
+		  'Authorization': `Bearer ${token}`,
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ email }),
@@ -1312,6 +1322,10 @@
             // Fetch log data from the server
             const response = await fetch(API_LOCAL + "/logs", {
               credentials: "include",
+		    headers: {
+            'Authorization': `Bearer ${token}`,
+            "Content-Type": "application/json",
+          }
             });
 
             if (!response.ok) {
