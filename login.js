@@ -1,5 +1,5 @@
 import { API_LOCAL } from "./config";
-
+import Cookies from "js-cookie";
 fetch(API_LOCAL + "/profile", {
   // Include cookies with the request
   headers: {
@@ -49,6 +49,7 @@ formEl.addEventListener("submit", async (event) => {
         location.href = "/block/";
         console.log("blockedddddd");
       } else if (data.message === "Login successful") {
+        Cookies.set("jwt", data.token);
         console.log("Welcome");
         if (data.role == "ADMIN") {
           location.href = "/admin/";
