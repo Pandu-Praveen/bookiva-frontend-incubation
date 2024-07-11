@@ -1,23 +1,7 @@
-// var ctx = document.querySelector(".chart");
-// var myChart = new Chart(ctx, {
-//   type: "bar",
-//   data: {
-//     labels: ["CS", "IT", "ECE", "EE", "ME", "BE"],
-//     datasets: [
-//       {
-//         label: "# of students",
-//         data: [105, 124, 78, 91, 62, 56],
-//         backgroundColor: [
-//           "rgba(255, 99, 132, 0.2)",
-//           "rgba(54, 162, 235, 0.2)",
-//           "rgba(255, 206, 86, 0.2)",
-//           "rgba(75, 192, 192, 0.2)",
-//           "rgba(153, 102, 255, 0.2)",
-//           "rgba(255, 159, 64, 0.2)",
-//         ],
 
 import { API_LOCAL } from "./config";
-
+import Cookies from "js-cookie";
+const token =  Cookies.get("jwt");
 //         borderColor: [
 //           "rgba(255,99,132,1)",
 //           "rgba(54, 162, 235, 1)",
@@ -92,6 +76,7 @@ async function menu() {
   const response = await fetch(API_LOCAL + "/profile", {
     credentials: "include", // Include cookies with the request
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
@@ -150,6 +135,7 @@ const updateUserStatus = async (index, tableId, currData) => {
       mode: "cors",
       method: "POST",
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -395,6 +381,10 @@ const getUsers = async () => {
   try {
     const userRecords = await fetch(API_LOCAL + "/allUsers/", {
       credentials: "include",
+      headers: {
+            'Authorization': `Bearer ${token}`,
+            "Content-Type": "application/json",
+          }
     });
     if (userRecords.status == 401) {
       location.href = "/login/";
@@ -425,6 +415,10 @@ const fetchAndDisplayData = async () => {
     // Fetch data from the API based on the selected type
     const response = await fetch(API_LOCAL + "/admin/", {
       credentials: "include",
+      headers: {
+            'Authorization': `Bearer ${token}`,
+            "Content-Type": "application/json",
+          }
     });
     if (response.status == 401) {
       location.href = "/login/";
@@ -793,6 +787,7 @@ const acceptBooking = async (index, tableId, currData) => {
       mode: "cors",
       method: "POST",
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -863,6 +858,7 @@ const rejectBooking = async (index, tableId, currData) => {
       mode: "cors",
       method: "POST",
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -972,10 +968,12 @@ $(document).ready(function () {
     const res = await fetch(API_LOCAL + "/logout", {
       credentials: "include", // Include cookies with the request
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
     if (res.status == 200) {
+      Cookies.remove('jwt', { path: '/' });
       location.href = "/login/";
     }
     ClearHistory();
