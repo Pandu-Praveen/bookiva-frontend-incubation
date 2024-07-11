@@ -314,6 +314,7 @@ document.addEventListener("click", (e) => {
         function ClearHistory() {
           var backlen = history.length;
           history.go(-backlen);
+          Cookies.remove('jwt', { path: '/' });
           window.location.href = "/login/";
         }
         // location.href = "/login/";
