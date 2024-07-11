@@ -159,6 +159,7 @@ function renderVenues(venues) {
         await fetch(API_LOCAL + "/profile", {
           credentials: "include", // Include cookies with the request
           headers: {
+            'Authorization': `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }).then((res) => {
@@ -214,6 +215,7 @@ async function menu() {
   const response = await fetch(API_LOCAL + "/profile", {
     credentials: "include", // Include cookies with the request
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
