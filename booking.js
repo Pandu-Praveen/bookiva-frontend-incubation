@@ -41,7 +41,7 @@ async function getprebook() {
     },
   });
   haLL = await re.json();
-  console.log(haLL);
+  // console.log(haLL);
   const hallName = haLL.HALL;
   const venue = await fetch(API_LOCAL + "/venues", {
       method: "POST",
@@ -53,7 +53,7 @@ async function getprebook() {
       credentials: "include",
     });
     const data = await venue.json();
-  console.log(data,data[0].imgUrl);
+  // console.log(data,data[0].imgUrl);
   if (re.status != 200) {
     //alert("Some error found in selecting hall.Please try again!");
     location.href = "/venues/";
