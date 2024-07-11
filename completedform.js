@@ -1,5 +1,6 @@
 import { API_LOCAL } from "./config";
-
+import Cookies from "js-cookie";
+const token =  Cookies.get("jwt");
 feather.replace();
 const userMenu = document.querySelector(".user-menu");
 document.querySelector(".user-nav").addEventListener("click", (e) => {
@@ -12,6 +13,7 @@ async function checkuser() {
   response = await fetch(API_LOCAL + "/profile", {
     credentials: "include", // Include cookies with the request
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
@@ -41,6 +43,7 @@ async function checkuser() {
       const logout = fetch(API_LOCAL + "/logout", {
         credentials: "include", // Include cookies with the request
         headers: {
+          'Authorization': `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
@@ -48,6 +51,7 @@ async function checkuser() {
       function ClearHistory() {
         var backlen = history.length;
         history.go(-backlen);
+        Cookies.remove('jwt', { path: '/' });
         window.location.href = "/login/";
       }
     });
@@ -82,6 +86,7 @@ async function getdetail() {
     method: "POST",
     credentials: "include", // Include cookies with the request
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ bookingId }),
@@ -141,6 +146,10 @@ document.querySelector(".form").addEventListener("submit", async function (e) {
         method: "POST",
         body: formData,
         credentials: "include", // Include cookies with the request
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            "Content-Type": "application/json",
+          }
       });
 
       if (response.ok) {
