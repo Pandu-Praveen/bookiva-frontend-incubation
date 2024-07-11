@@ -726,6 +726,8 @@
     <!-- <script src="/admin.js"></script> -->
 
     <script>
+      import Cookies from "js-cookie";
+      const token =  Cookies.get("jwt");
       const API_LOCAL = "https://bookiva-backend-incubation.vercel.app";
       let NAME, Name, EMAIL;
       menu();
@@ -733,6 +735,7 @@
         const response = await fetch(API_LOCAL + "/profile", {
           credentials: "include", // Include cookies with the request
           headers: {
+            'Authorization': `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         });
@@ -801,6 +804,7 @@
             mode: "cors",
             method: "POST",
             headers: {
+              'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -1033,6 +1037,10 @@
         try {
           const userRecords = await fetch(API_LOCAL + "/allUsers", {
             credentials: "include",
+             headers: {
+            'Authorization': `Bearer ${token}`,
+            "Content-Type": "application/json",
+          }
           });
           if (userRecords.status == 401) {
             location.href = "/login/";
@@ -1063,6 +1071,10 @@
           // Fetch data from the API based on the selected type
           const response = await fetch(API_LOCAL + "/admin", {
             credentials: "include",
+             headers: {
+            'Authorization': `Bearer ${token}`,
+            "Content-Type": "application/json",
+          }
           });
           if (response.status == 401) {
             location.href = "/login/";
@@ -1465,6 +1477,7 @@
             mode: "cors",
             method: "POST",
             headers: {
+              'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -1537,6 +1550,7 @@
             mode: "cors",
             method: "POST",
             headers: {
+              'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -1634,10 +1648,12 @@
           const res = await fetch(API_LOCAL + "/logout", {
             credentials: "include", // Include cookies with the request
             headers: {
+              'Authorization': `Bearer ${token}`,
               "Content-Type": "application/json",
             },
           });
           if (res.status == 200) {
+            Cookies.remove('jwt', { path: '/' });
             location.href = "/login/";
           }
           ClearHistory();
