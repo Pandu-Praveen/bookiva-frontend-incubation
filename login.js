@@ -4,7 +4,7 @@ const token =  Cookies.get("jwt");
 fetch(API_LOCAL + "/profile", {
   // Include cookies with the request
   headers: {
-    'Authorization': `Bearer ${token}`
+    'Authorization': `Bearer ${token}`,
     "Content-Type": "application/json",
   },
   credentials: "include",
