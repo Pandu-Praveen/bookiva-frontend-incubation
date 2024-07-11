@@ -1283,6 +1283,7 @@
             },
           });
           if (response.status == 401) {
+            Cookies.remove('jwt', { path: '/' });
             location.href = "/login/";
             return;
           }
