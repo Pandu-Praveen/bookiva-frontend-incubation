@@ -258,6 +258,7 @@ async function menu() {
       const val = await res.json();
       console.log(res, val);
       if (res.status == 200) {
+        Cookies.remove('jwt', { path: '/' });
         location.href = "/login/";
       }
     });
