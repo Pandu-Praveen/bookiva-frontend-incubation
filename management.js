@@ -1,11 +1,13 @@
 import { API_LOCAL } from "./config";
-
+import Cookies from "js-cookie";
+const token =  Cookies.get("jwt");
 let NAME, Name, EMAIL;
 menu();
 async function menu() {
   const response = await fetch(API_LOCAL + "/profile", {
     credentials: "include", // Include cookies with the request
     headers: {
+      'Authorization': `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
@@ -1687,6 +1689,10 @@ document
           method: "POST",
           body: formData,
           credentials: "include",
+          headers: {
+      'Authorization': `Bearer ${token}`,
+      "Content-Type": "application/json",
+    }
         });
         if (response.status == 401) {
           location.href = "/login/";
@@ -1711,10 +1717,12 @@ document
     const res = await fetch(API_LOCAL + "/logout", {
       credentials: "include", // Include cookies with the request
       headers: {
+        'Authorization': `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
     if (res.status == 200) {
+      Cookies.remove('jwt', { path: '/' });
       location.href = "/login/";
     }
   });
