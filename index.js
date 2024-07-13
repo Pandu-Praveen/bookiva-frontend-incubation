@@ -4,6 +4,10 @@ const token =  Cookies.get("jwt");
 const currlocation = location.href;
 if (
   !(
+    currlocation == "http://www.mybookiva.com/" ||
+    currlocation == "http://mybookiva.com/" ||
+    currlocation == "http://mybookiva.com/index.html" ||
+    currlocation == "http://mybookiva.com/index" ||
     currlocation == "http://localhost:5173/" ||
     currlocation == "http://localhost:5173/index.html" ||
     currlocation == "http://localhost:5173/index" ||
