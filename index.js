@@ -4,6 +4,7 @@ const token =  Cookies.get("jwt");
 const currlocation = location.href;
 if (
   !(
+    currlocation == "https://incubation.mybookiva.com/" ||
     currlocation == "https://www.mybookiva.com/" ||
     currlocation == "https://mybookiva.com/" ||
     currlocation == "https://mybookiva.com/index.html" ||
