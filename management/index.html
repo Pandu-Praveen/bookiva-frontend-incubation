@@ -568,6 +568,8 @@
 
     <script>
       // Sample data for completed, pending, and not completed events by month
+	  
+      const token =  Cookies.get("jwt");
       let eventData = [
         {
           month: "January",
@@ -935,9 +937,9 @@
         border-color: #007bff; /* Change border color on focus */
       }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script >
 
-    <script type="module">
-      import Cookies from "js-cookie";
       const token =  Cookies.get("jwt");
       const API_LOCAL = "https://bookiva-backend-incubation.vercel.app";
       document.addEventListener("DOMContentLoaded", async function () {
