@@ -54,8 +54,10 @@ formEl.addEventListener("submit", async (event) => {
         Cookies.set("jwt", data.token, { expires: 1, path: '/' });
         console.log("Welcome");
         if (data.role == "ADMIN") {
+          Cookies.set("jwt", data.token, { expires: 1, path: '/' });
           location.href = "/admin/";
         } else if (data.role == "MANAGEMENT") {
+          Cookies.set("jwt", data.token, { expires: 1, path: '/' });
           location.href = "/management/";
         } else if (data.role == "USER") {
           location.href = "/venues/";
