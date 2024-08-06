@@ -51,13 +51,14 @@
         >
       </p>
       <div class="home-buttons">
-        <a id="reservebtn" class="butt-main ff-inter fs-m reserve-btn"
+        <a id="reservebtn" href='/login/' class="butt-main ff-inter fs-m reserve-btn"
           >Reserve Now</a
         >
       </div>
     </div>
     <!-- <script  src="/config.js" type="module"></script> -->
     <script>
+      import { API_LOCAL } from "./config";
       feather.replace();
       localStorage.setItem("x", 1);
       fetch(API_LOCAL + "/profile", {
@@ -87,9 +88,6 @@
           } else if (data.role == "USER") {
             atag.setAttribute('href', '/venues/');
             // location.href = "/venues/";
-          }
-          else{
-            atag.setAttribute('href','/login');
           }
        });
     </script>
