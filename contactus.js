@@ -1,10 +1,10 @@
 import { API_LOCAL } from "./config";
 import Cookies from "js-cookie";
-import feather from 'feather-icons';
+// import feather from 'feather-icons';
+feather.replace();
 
 document.addEventListener("DOMContentLoaded", function() {
     const token = Cookies.get("jwt");
-    feather.replace();
     localStorage.setItem("x", 1);
 
     fetch(API_LOCAL + "/profile", {
