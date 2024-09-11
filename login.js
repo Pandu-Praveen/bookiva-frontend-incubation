@@ -33,6 +33,7 @@ formEl.addEventListener("submit", async (event) => {
   const email = document.querySelector("#email").value;
   const password = document.querySelector("#password").value;
   var signBtn = document.getElementById("signin");
+  let oldSignInBtnHTL = signBtn.innerHTML;
   signBtn.innerHTML = `<span class="loader" style="border-top: 3px solid #fff;height: 24px; width: 24px;"></span>`;
   signBtn.classList.add("disabled");
   await fetch(API_LOCAL + "/login", {
@@ -64,19 +65,20 @@ formEl.addEventListener("submit", async (event) => {
         }
       } else if (data.message === "Invalid email") {
         alert("Invalid Email or Password");
-        signBtn.innerHTML = `<span class="sign-in butt-main ff-inter fs-3s">Sign In</span>`;
-        signBtn.classList.remove("disabled");
       } else if (data.message === "Invalid password") {
         alert("Invalid Password");
-        signBtn.innerHTML = `<span class="sign-in butt-main ff-inter fs-3s">Sign In</span>`;
-        signBtn.classList.remove("disabled");
       } else if (data.message === "Internal server error") {
         alert("Internal server error");
-        signBtn.innerHTML = `<span class="sign-in butt-main ff-inter fs-3s">Sign In</span>`;
-        signBtn.classList.remove("disabled");
       }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.log(error);
+      alert("Something went wrong!");
+    })
+    .finally(() => {
+      signBtn.innerHTML = oldSignInBtnHTL;
+      signBtn.classList.remove("disabled");
+    })
 });
 
 // window.addEventListener('popstate', function(event) {

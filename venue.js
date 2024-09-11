@@ -116,8 +116,11 @@ window.addEventListener("DOMContentLoaded", async () => {
       body: JSON.stringify({ hallName }),
       credentials: "include",
     });
+    if (!response.ok) {
+      document.querySelector(".cards-container").innerHTML = `<p>Something went wrong :(`;
+      throw new Error("Error in fetching venue details!");
+    }
     data = await response.json();
-    console.log(data);
     // Process the data and generate HTML elements to display it
     renderVenues(data);
   } catch (err) {

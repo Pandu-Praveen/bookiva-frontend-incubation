@@ -167,10 +167,10 @@ body {
 
 .butt-main {
   padding: 1rem;
-  background-color: rgb(24, 24, 24);
+  background-color: rgb(218, 85, 85);
   color: white;
   border-radius: 5px;
-  border: 1px solid rgb(24, 24, 24);
+  border: 1px solid rgb(218, 85, 85);
   text-decoration: none;
   text-align: justify;
 }
@@ -178,9 +178,9 @@ body {
 .butt-sub {
   padding: 1rem;
   text-decoration: none;
-  border: 1px solid rgb(24, 24, 24);
+  border: 1px solid rgb(218, 85, 85);
   border-radius: 5px;
-  color: rgb(24, 24, 24);
+  color: rgb(218, 85, 85);
   text-align: justify;
 }
 
@@ -195,11 +195,18 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 3%;
+  padding: 1.2rem;
+  border-radius: 10px;
   gap: 1.2rem;
   background-color: #f7f7f7;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.089);
 }
+
+.form-input-container input, .form-input-container select {
+  width: 100%;
+  border: 1px solid silver;
+}
+
 @media only screen and (max-width: 768px) {
   .form-container {
     padding: 5%; /* Padding for mobile devices */
@@ -208,7 +215,7 @@ body {
 form {
   display: flex;
   flex-direction: column;
-  padding: 5%;
+  padding: 2%;
   gap: 1rem;
 }
 
