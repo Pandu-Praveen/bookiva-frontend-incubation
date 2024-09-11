@@ -13,6 +13,7 @@ async function checkuseravailable() {
       location.href = "/login/";
     }
   });
+  document.querySelector(".loading-overlay").remove();
 }
 
 import { API_LOCAL } from "./config";
@@ -347,7 +348,7 @@ const putMsg = (msg, success) => {
   msgBox.innerHTML = `<div style="display:flex; align-items: center; gap: 0.5rem; margin-bottom: 
     1rem;">${
       success
-        ? '<i data-feather="check-circle"></i><p class="ff-inter fs-s fw-500">Booking was successful! Check your mail for confirmation:</p>'
+        ? '<i data-feather="check-circle"></i><p class="ff-inter fs-s fw-500">Your booking is successful!</p>'
         : '<i data-feather="x-circle"></i><p class="ff-inter fs-s fw-500">Something went wrong! Please try after some time or contact admin</p>'
     }
      </div>`;

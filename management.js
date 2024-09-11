@@ -4,7 +4,7 @@ const token =  Cookies.get("jwt");
 let NAME, Name, EMAIL;
 menu();
 async function menu() {
-  const response = await fetch(API_LOCAL + "/profile", {
+  const response = await fetch(API_LOCAL + "/profile", { 
     credentials: "include", // Include cookies with the request
     headers: {
       'Authorization': `Bearer ${token}`,
