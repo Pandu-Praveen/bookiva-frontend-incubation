@@ -1,61 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" type="image/png" href="/images/icon2.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/mobile.css" />
-    <link rel="stylesheet" href="/css/utility.css" />
-    <title>Bookiva - Home</title>
-  </head>
-  <body>
-    <nav class="navv-main">
-      <div class="nav-main">
-        <div class="nav-img">
-          <!-- <img src="/images/icon2.png" alt="" style="width: 30px" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="icon" type="image/png" href="/images/icon2.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/mobile.css" />
+  <link rel="stylesheet" href="/css/utility.css" />
+  <title>Bookiva - Home</title>
+</head>
+
+<body>
+  <nav class="navv-main">
+    <div class="nav-main">
+      <div class="nav-img">
+        <!-- <img src="/images/icon2.png" alt="" style="width: 30px" />
           <img src="/images/bookiva2.png" alt="" style="width: 130px" /> -->
-          <img src="/images/bookiva4.png" alt="" style="width: 200px" />
-        </div>
-        <div class="nav-links">
-          <a href="/" class="nav-link ff-inter fs-2s">Home</a>
-          <a href="/venues/" class="nav-link nav-link-login ff-inter fs-2s"
-            >Browse</a
-          >
-          <button class="user-nav br-m">
-            <i data-feather="user"></i>
-            <i data-feather="chevron-down"></i>
-            <div class="user-menu user-menu-hidden">
-              <div class="user-menu-category">
-                <a class="ff-inter fs-2s user-menu-link" href="/login/"
-                  >Log in</a
-                >
-              </div>
-              <hr class="user-menu-hr" />
-              <a class="ff-inter fs-2s user-menu-link" href="#">Contact</a>
-            </div>
-          </button>
-        </div>
+        <img src="/images/bookiva4.png" alt="" style="width: 200px" />
       </div>
-    </nav>
-    <div class="home-content">
-      <h1 class="ff-inter fs-3l fw-600"></h1>
-      <p class="ff-inter fs-3l fw-600">
-        <a href="https://sairam.edu.in/">Sri Sairam Engineering College</a>
-      </p>
-      <p class="ff-inter fs-3l fw-600">
-        <a href="https://sairamit.edu.in/"
-          >Sri Sairam Institute of Technology</a
-        >
-      </p>
-      <div class="home-buttons">
-        <a id="reservebtn" href='/login/' class="butt-main ff-inter fs-m reserve-btn"
-          >Reserve Now</a
-        >
+      <div class="nav-links">
+        <a href="/" class="nav-link ff-inter fs-2s">Home</a>
+        <a href="/venues/" class="nav-link nav-link-login ff-inter fs-2s">Browse</a>
+        <button class="user-nav br-m">
+          <i data-feather="user"></i>
+          <i data-feather="chevron-down"></i>
+          <div class="user-menu user-menu-hidden">
+            <div class="user-menu-category">
+              <a class="ff-inter fs-2s user-menu-link" href="/login/">Log in</a>
+            </div>
+            <hr class="user-menu-hr" />
+            <a class="ff-inter fs-2s user-menu-link" href="#">Contact</a>
+          </div>
+        </button>
       </div>
     </div>
-    <script  src="/contactus.js" type="module"></script>
-  </body>
+  </nav>
+  <div class="home-content">
+    <h1 class="ff-inter fs-3l fw-600">Welcome to Sri Sairam Institutions</h1>
+    <div class="college-links">
+      <div class="college-link">
+        <img src="/images/sairam-sec-logo.png" alt="">
+        <a class="ff-inter fs-l fw-600" href="https://sairam.edu.in/">Sri Sairam Engineering College</a>
+      </div>
+      <div class="college-link">
+        <img src="/images/sairam-it-logo.png" alt="">
+        <a class="ff-inter fs-l fw-600" href="https://sairamit.edu.in/">Sri Sairam Institute of Technology</a>
+      </div>
+    </div>
+    <div class="home-buttons">
+      <a id="reservebtn" href='/login/' class="butt-main ff-inter fs-m reserve-btn">Reserve Your Spot Now</a>
+    </div>
+    <div class="contact-box">
+      <h2 class="ff-inter fs-2l fw-500">Get in Touch</h2>
+      <p class="ff-inter fs-m">We'd love to hear from you! Whether you have questions, feedback, or just want to say
+        hello, feel free to reach out.</p>
+      <ul class="contact-methods">
+        <li><strong>Email:</strong> <a href="mailto:info@sairam.edu.in">info@sairam.edu.in</a></li>
+        <li><strong>Phone:</strong> <a href="tel:+911234567890">+91 12345 67890</a></li>
+        <li><strong>Address:</strong> Sri Sairam Engineering College, Chennai</li>
+      </ul>
+    </div>
+  </div>
+
+  <style>
+    .contact-box {
+      border: 2px solid #ccc;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    .college-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+    }
+
+    .college-link {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    img {
+      height: auto;
+      width: 300px;
+    }
+  </style>
+  <script src="/contactus.js" type="module"></script>
+</body>
+
 </html>

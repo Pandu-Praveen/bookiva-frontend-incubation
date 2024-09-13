@@ -94,7 +94,8 @@ body {
 }
 
 .user-menu-hidden {
-  display: none;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
   z-index: -10;
   opacity: 0;
 }
@@ -166,7 +167,7 @@ body {
 }
 
 .butt-main {
-  padding: 1rem;
+  padding: 0.6rem 1rem;
   background-color: rgb(218, 85, 85);
   color: white;
   border-radius: 5px;
@@ -176,7 +177,7 @@ body {
 }
 
 .butt-sub {
-  padding: 1rem;
+  padding: 0.6rem 1rem;
   text-decoration: none;
   border: 1px solid rgb(218, 85, 85);
   border-radius: 5px;

@@ -25,6 +25,11 @@
 </head>
 
 <body>
+  <div
+    style="width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); display: flex; justify-content: center; align-items: center; z-index: 500; top: 0; left: 0; position: fixed;"
+    class="loading-overlay">
+    <span class="loader"></span>
+  </div>
   <!-- SIDEBAR -->
   <section id="sidebar">
     <a href="#" class="brand">
@@ -866,10 +871,6 @@
   </style>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
   <script>
-    const loaderOverlay = `<div style="width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); display: flex; justify-content: center; align-items: center; z-index: 50; top: 0; left: 0; position: fixed;" class="loading-overlay">
-      <span class="loader"></span> 
-      </div>`;
-    document.body.insertAdjacentHTML("beforeend", loaderOverlay);
     const token = Cookies.get("jwt");
     const API_LOCAL = "https://bookiva-backend-incubation.vercel.app";
     document.addEventListener("DOMContentLoaded", async function () {

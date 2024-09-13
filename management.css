@@ -54,7 +54,7 @@ body {
   width: 280px;
   height: 100%;
   background: var(--light);
-  z-index: 2000;
+  z-index: 100;
   font-family: poppins;
   transition: 0.3s ease;
   overflow-x: hidden;
@@ -180,7 +180,7 @@ body {
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 #content nav::before {
   content: "";
