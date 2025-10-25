@@ -13,10 +13,10 @@ fetch(API_LOCAL + "/profile", {
     return res.json();
   })
   .then((data) => {
-    console.log(data);
+   // console.log(data);
     if (data.blockStatus) {
       location.href = "/block/";
-      console.log("blockedddddd");
+      //console.log("blockedddddd");
     } else if (data.role == "MANAGEMENT") {
       location.href = "/management/";
     } else if (data.role == "ADMIN") {
@@ -47,13 +47,13 @@ formEl.addEventListener("submit", async (event) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data, data.blockStatus);
+      //console.log(data, data.blockStatus);
       if (data.blockStatus) {
         location.href = "/block/";
-        console.log("blockedddddd");
+       // console.log("blockedddddd");
       } else if (data.message === "Login successful") {
         Cookies.set("jwt", data.token, { expires: 1, path: '/' });
-        console.log("Welcome");
+       // console.log("Welcome");
         if (data.role == "ADMIN") {
           Cookies.set("jwt", data.token, { expires: 1, path: '/' });
           location.href = "/admin/";
