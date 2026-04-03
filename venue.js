@@ -133,7 +133,6 @@ function renderVenues(venues) {
   const container = document.querySelector(".cards-container");
   // Clear previous content
   venues.forEach((cardData) => {
-    console.log(cardData,cardData.imgUrl);
     renderedCards += `<div class="hall-card">
             <div class="hall-img">
                 <img src="${cardData.imgUrl}" alt="${cardData.hallName}" 
